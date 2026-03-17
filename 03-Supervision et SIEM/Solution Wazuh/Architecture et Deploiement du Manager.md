@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!NOTE] 
+> **Contexte**
 > 
 > Suite à l'audit et au durcissement de l'infrastructure Active Directory, il est impératif de mettre en place une solution de supervision continue. Wazuh a été sélectionné comme plateforme SIEM et XDR (Extended Detection and Response). Ce document détaille le déploiement du serveur central (Manager), qui aura pour rôle de collecter, d'indexer et d'analyser les journaux d'événements (logs) de l'ensemble du parc informatique.
 
-> [!NOTE] Architecture de Déploiement (All-in-One)
+> [!NOTE] 
+> **Architecture de Déploiement (All-in-One)**
 > 
 > Pour cette infrastructure, un déploiement centralisé (All-in-One) a été privilégié. Le même serveur héberge le Manager (analyse), l'Indexer (stockage) et le Dashboard (interface visuelle).
 > 
@@ -63,11 +65,13 @@ Un serveur Windows Server 2019 génère nativement des milliers de journaux d'é
 
 Le Manager Wazuh agit comme le "cerveau" de l'infrastructure de défense. Il ne se contente pas de stocker les logs : il les corrèle en temps réel avec des bases de données de menaces mondiales (Threat Intelligence) et avec la matrice **MITRE ATT&CK**, permettant de transformer une ligne de log illisible en une alerte de sécurité claire et exploitable.
 
-> [!SUCCESS] Bilan du Déploiement
+> [!TIP] 
+> **Bilan du Déploiement**
 > 
 > L'infrastructure de supervision centrale est en ligne, sécurisée et prête à recevoir les données. La prochaine étape consiste à déployer l'agent de collecte sur les cibles du réseau.
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Deploiement des Agents Windows via GPO]] — Étape suivante : connecter le parc au Manager.
 >

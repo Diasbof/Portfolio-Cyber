@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!NOTE] 
+> **Contexte**
 > 
 > Le serveur central Wazuh étant opérationnel, l'objectif est désormais de remonter les événements de sécurité spécifiques du contrôleur de domaine (SRV-AD01). Par défaut, Windows Server génère un volume massif de journaux. Cette configuration vise à cibler précisément les événements liés à l'authentification, à la gestion des comptes (IAM) et aux modifications des stratégies de groupe, afin de détecter toute compromission de l'Active Directory.
 
-> [!NOTE] Architecture de Collecte
+> [!NOTE] 
+> **Architecture de Collecte**
 > 
 > |**Source des logs**|**Canal (EventChannel)**|**Destination**|**Format de transmission**|
 > |---|---|---|---|
@@ -71,11 +73,13 @@ Un attaquant qui parvient à contourner les protections initiales (via un 0-day 
 
 Grâce à cette collecte ciblée, le Manager Wazuh dispose de la matière première nécessaire pour déclencher une alerte instantanée, réduisant le temps de détection (MTTD - Mean Time To Detect) de plusieurs mois à quelques secondes.
 
-> [!SUCCESS] Résultat final
+> [!TIP] 
+> **Résultat final**
 > 
 > Les journaux d'événements critiques de l'Active Directory sont audités localement et transmis en continu, de manière chiffrée, au serveur Wazuh. Le SIEM dispose désormais de la visibilité requise sur l'identité et les accès du réseau.
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Architecture et Deploiement du Manager]] — Serveur central réceptionnant ces logs.
 >     

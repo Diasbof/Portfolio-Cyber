@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!INFO] 
+> **Contexte**
 > 
 > Ce document détaille l'architecture logique de l'annuaire Active Directory (AD DS) déployé sur Windows Server 2019. Cette infrastructure sert de socle au réseau d'entreprise simulé dans le cadre de la certification. L'installation a été pensée dès le départ pour faciliter la ségrégation des droits (modèle de Tiering) et l'application granulaire des stratégies de groupe (GPO) de sécurité.
 
-> [!NOTE] Topologie du Domaine
+> [!NOTE] 
+> **Topologie du Domaine**
 > 
 > |**Rôle**|**Nom d'hôte**|**IP (Statique)**|**Nom de Domaine**|
 > |---|---|---|---|
@@ -64,11 +66,13 @@ REM Exemple de création d'une OU via le module ActiveDirectory
 New-ADOrganizationalUnit -Name "Postes-Clients" -Path "DC=fsec,DC=lan" -ProtectedFromAccidentalDeletion $true
 ```
 
-> [!SUCCESS] Bilan du Déploiement
+> [!TIP] 
+> **Bilan du Déploiement**
 > 
 > L'Active Directory est fonctionnel, les machines clientes sont jointes au domaine et la structure des OU est prête à recevoir les GPO correctives identifiées lors de la phase d'audit. La protection contre la suppression accidentelle a été activée sur toutes les OU critiques.
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Gestion des Groupes et Moindre Privilege]] — Détail des groupes de sécurité et délégations.
 >     

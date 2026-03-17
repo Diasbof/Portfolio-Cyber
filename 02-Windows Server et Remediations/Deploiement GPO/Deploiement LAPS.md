@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!NOTE] 
+> **Contexte**
 > 
 > L'audit de sécurité a mis en évidence le partage d'un mot de passe administrateur local identique sur l'ensemble du parc informatique (Vulnérabilité REM-03). Ce document détaille l'implémentation de Microsoft LAPS pour générer, faire pivoter et stocker de manière sécurisée des mots de passe uniques pour chaque compte administrateur local directement dans l'Active Directory.
 
-> [!NOTE] Architecture et Prérequis
+> [!NOTE] 
+> **Architecture et Prérequis**
 > 
 > |**Composant**|**Rôle**|**Cible**|
 > |---|---|---|
@@ -86,11 +88,13 @@ L'absence de LAPS est une aubaine pour un attaquant. Sans cette solution, la com
 
 Si ce mot de passe est identique sur tout le parc, l'attaquant utilise la technique du **Pass-the-Hash (PtH)** pour se connecter de proche en proche à toutes les machines du domaine (Mouvement Latéral), jusqu'à atteindre un serveur critique. LAPS casse cette chaîne d'attaque en rendant chaque hash unique et éphémère.
 
-> [!SUCCESS] Vérification
+> [!TIP] 
+> **Vérification**
 > 
 > L'administrateur autorisé peut désormais utiliser l'interface graphique `LAPS UI` ou la commande PowerShell `Get-AdmPwdPassword -ComputerName PC-CLIENT01` pour récupérer le mot de passe local en cas de besoin (ex: perte de la relation d'approbation avec le domaine).
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Matrice de Remediation]] — Validation de la correction REM-03.
 >     

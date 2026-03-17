@@ -1,6 +1,10 @@
-> [!INFO] Contexte Ce document consolide les résultats bruts obtenus lors des phases d'analyse (notamment via PingCastle) pour en extraire une vision globale des risques pesant sur le système d'information. L'objectif est de classifier ces vulnérabilités par vecteur d'attaque afin de structurer et prioriser les futures remédiations.
+> [!INFO] 
+> **Contexte**
+>  Ce document consolide les résultats bruts obtenus lors des phases d'analyse (notamment via PingCastle) pour en extraire une vision globale des risques pesant sur le système d'information. L'objectif est de classifier ces vulnérabilités par vecteur d'attaque afin de structurer et prioriser les futures remédiations.
 
-> [!NOTE] Échelle de Criticité La classification s'appuie sur le niveau d'impact potentiel sur la confidentialité, l'intégrité et la disponibilité (CIA) du domaine :
+> [!NOTE] 
+> **Échelle de Criticité** 
+> La classification s'appuie sur le niveau d'impact potentiel sur la confidentialité, l'intégrité et la disponibilité (CIA) du domaine :
 > 
 > - **Critique :** Compromission totale du domaine possible à très court terme.
 >     
@@ -49,9 +53,12 @@ La non-remédiation de ces vulnérabilités expose directement l'organisation à
 2. **Fuite de données critiques :** Usurpation d'identité et élévation de privilèges silencieuse via les protocoles de diffusion réseau.
     
 
-> [!SUCCESS] Prochaine étape Cette synthèse confirme la nécessité d'une intervention ciblée. Les éléments classifiés ici justifient le plan d'action détaillé dans la Matrice de Remédiation, clôturant ainsi la phase d'Audit et Conformité.
+> [!TIP] 
+> **Prochaine étape**
+>  Cette synthèse confirme la nécessité d'une intervention ciblée. Les éléments classifiés ici justifient le plan d'action détaillé dans la Matrice de Remédiation, clôturant ainsi la phase d'Audit et Conformité.
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Analyse PingCastle]] — Rapport technique détaillé et scores de risque.
 >     

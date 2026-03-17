@@ -1,6 +1,9 @@
-> [!INFO] Contexte Le rapport d'audit PingCastle a mis en évidence l'activation par défaut des protocoles de résolution de noms de diffusion (LLMNR et NetBIOS sur TCP/IP). Ces protocoles historiques sont aujourd'hui considérés comme des vulnérabilités majeures (Vulnérabilité REM-02), car ils permettent à un attaquant de réaliser des attaques par empoisonnement (Poisoning) et des relais NTLM. Ce document détaille les procédures pour les éradiquer du domaine.
+> [!NOTE] 
+> **Contexte**
+>  Le rapport d'audit PingCastle a mis en évidence l'activation par défaut des protocoles de résolution de noms de diffusion (LLMNR et NetBIOS sur TCP/IP). Ces protocoles historiques sont aujourd'hui considérés comme des vulnérabilités majeures (Vulnérabilité REM-02), car ils permettent à un attaquant de réaliser des attaques par empoisonnement (Poisoning) et des relais NTLM. Ce document détaille les procédures pour les éradiquer du domaine.
 
-> [!NOTE] Périmètre d'application
+> [!NOTE] 
+> **Périmètre d'application**
 > 
 > |Protocole|Vecteur de désactivation|Cible|
 > |---|---|---|
@@ -90,9 +93,12 @@ L'outil **Responder** est un standard dans l'arsenal des attaquants pour comprom
 
 En appliquant ces remédiations, les postes Windows s'en tiennent strictement à la résolution DNS classique. Les requêtes de diffusion sont coupées à la source, rendant l'outil Responder totalement inefficace sur ce segment réseau.
 
-> [!SUCCESS] Résultat final Les protocoles de diffusion réseau obsolètes sont totalement neutralisés sur le domaine `fsec.lan`. Les communications réseau internes sont assainies, réduisant considérablement les risques de vol d'identifiants.
+> [!TIP] 
+> **Résultat final** 
+> Les protocoles de diffusion réseau obsolètes sont totalement neutralisés sur le domaine `fsec.lan`. Les communications réseau internes sont assainies, réduisant considérablement les risques de vol d'identifiants.
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Analyse PingCastle]] — Vulnérabilité A-02 identifiant l'activation de ces protocoles.
 >     

@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!NOTE] 
+> **Contexte**
 > 
 > L'audit PingCastle a relevé une politique de mots de passe globale insuffisante pour protéger les comptes critiques (Vulnérabilité REM-05). Dans un annuaire Active Directory, il n'est possible de définir qu'une seule stratégie de mot de passe par défaut via GPO pour l'ensemble du domaine. Pour imposer des règles beaucoup plus strictes aux administrateurs sans pénaliser les utilisateurs standards, la fonctionnalité FGPP (Fine-Grained Password Policy) est déployée.
 
-> [!NOTE] Cibles et Exigences de Sécurité
+> [!NOTE] 
+> **Cibles et Exigences de Sécurité**
 > 
 > |**Groupe Cible**|**Longueur minimale**|**Complexité**|**Expiration**|**Verrouillage (Lockout)**|
 > |---|---|---|---|---|
@@ -67,11 +69,13 @@ L'application d'une FGPP répond directement à la menace des attaques par force
 
 En exigeant 16 caractères minimum pour les comptes à privilèges, le temps de cassage hors-ligne d'un hash NTLM intercepté devient mathématiquement irréalisable avec les capacités de calcul actuelles. De plus, le seuil de verrouillage strict (3 échecs) neutralise les tentatives de devinette en ligne sur les services exposés (comme un VPN ou un portail d'administration).
 
-> [!SUCCESS] Résultat final
+> [!TIP] 
+> **Résultat final**
 > 
 > Les comptes critiques du domaine sont désormais protégés par une politique d'authentification robuste, indépendante des contraintes imposées aux utilisateurs standards. La phase de remédiation des failles système et réseau est officiellement achevée.
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Matrice de Remediation]] — Validation de l'action REM-05.
 >     

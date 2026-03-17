@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!NOTE] 
+> **Contexte**
 > 
 > L'audit a révélé que les accès via le protocole RDP (Remote Desktop Protocol) n'étaient pas techniquement restreints (Vulnérabilité REM-04). Par défaut, le groupe "Administrateurs" local autorise l'accès RDP. Ce document détaille la mise en place de stratégies de groupe (GPO) pour verrouiller ces accès, interdisant formellement aux comptes à hauts privilèges (Tier 0) de s'exposer sur des machines de niveau inférieur (Tier 1 et Tier 2).
 
-> [!NOTE] Matrice des Autorisations RDP (Tiering)
+> [!NOTE] 
+> **Matrice des Autorisations RDP (Tiering)**
 > 
 > |**Cible (OU)**|**Groupe Autorisé (Allow)**|**Groupes Interdits (Deny)**|
 > |---|---|---|
@@ -31,7 +33,8 @@ Pour appliquer cette matrice, des GPO spécifiques sont créées et liées à ch
 
 _(Cette logique est répliquée avec les groupes correspondants pour les OU `Domain Controllers` et `Postes-Clients`)_.
 
-> [!WARNING] Règle de priorité Windows
+> [!WARNING] 
+> **Règle de priorité Windows**
 > 
 > Dans l'architecture Windows, un droit "Interdire" (Deny) prend toujours le pas sur un droit "Autoriser" (Allow). En cas de conflit d'appartenance à un groupe, l'utilisateur sera bloqué.
 
@@ -56,11 +59,13 @@ Si ce poste client est déjà compromis par un attaquant, ce dernier peut extrai
 
 En interdisant techniquement (Deny RDP Logon) la connexion des comptes Tier 0 sur les Tiers inférieurs, on élimine totalement ce vecteur de vol d'identifiants à hauts privilèges.
 
-> [!SUCCESS] Résultat final
+> [!TIP] 
+> **Résultat final**
 > 
 > Le modèle de Tiering n'est plus seulement théorique, il est techniquement forcé. Les mouvements latéraux via le protocole RDP sont désormais impossibles hors des limites définies par le principe de moindre privilège.
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Gestion des Groupes et Moindre Privilege]] — Groupes de sécurité utilisés dans cette GPO.
 >     

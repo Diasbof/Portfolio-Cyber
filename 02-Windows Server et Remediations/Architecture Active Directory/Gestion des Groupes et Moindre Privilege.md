@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!INFO] 
+> **Contexte**
 > 
 > À la suite de l'audit de sécurité, il a été constaté que la compromission d'un compte à privilèges constituait un risque majeur (mouvements latéraux et élévation de privilèges). Ce document détaille la refonte de la gestion des accès selon le principe du moindre privilège (Least Privilege) et l'implémentation du modèle de Tiering de Microsoft. L'objectif est de s'assurer qu'aucun administrateur de domaine ne se connecte sur une machine non sécurisée.
 
-> [!NOTE] Modèle de Tiering (Ségrégation des privilèges)
+> [!NOTE] 
+> **Modèle de Tiering (Ségrégation des privilèges)**
 > 
 > L'infrastructure a été divisée en trois niveaux d'administration hermétiques :
 > 
@@ -49,11 +51,13 @@ Get-ADGroupMember -Identity "Admins du domaine" | Select-Object Name, objectClas
 
 De plus, le groupe `Protected Users` natif de Windows Server a été exploité pour les comptes Tier 0, leur forçant l'utilisation de Kerberos (désactivation de NTLM) et empêchant la mise en cache de leurs identifiants.
 
-> [!SUCCESS] Bilan de Sécurisation IAM
+> [!TIP] 
+> **Bilan de Sécurisation IAM**
 > 
 > Le modèle de Tiering est logique et prêt à être renforcé techniquement. La prochaine étape consiste à déployer des Stratégies de Groupe (GPO) pour interdire matériellement (via les droits User Rights Assignment) la connexion interactive des comptes Tier 0 sur les machines Tier 1 et 2.
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Deploiement AD DS Windows Server 2019]] — Architecture des Unités d'Organisation.
 >     

@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!NOTE] 
+> **Contexte**
 > 
 > Ce document centralise le plan d'action de remédiation défini à l'issue de l'audit de l'infrastructure. Il a pour but de traduire chaque vulnérabilité identifiée (notamment via PingCastle) en une action technique concrète, mesurable et documentée. Le traitement de ces failles vise à élever le niveau de sécurité du domaine Windows Server 2019 en appliquant les principes de défense en profondeur et de moindre privilège.
 
-> [!NOTE] Environnement d'application
+> [!NOTE] 
+> **Environnement d'application**
 > 
 > |**Cible**|**Périmètre d'application**|**Méthode de déploiement privilégiée**|
 > |---|---|---|
@@ -34,11 +36,13 @@ Afin d'éviter toute interruption de service lors de l'application de ces correc
 4. **Documentation :** Rédaction de la fiche technique détaillant la configuration exacte.
     
 
-> [!SUCCESS] Objectif de Sécurisation
+> [!TIP] 
+> **Objectif de Sécurisation**
 > 
 > La complétion de cette matrice permettra de réduire drastiquement la surface d'attaque interne. Une fois ces remédiations appliquées, l'infrastructure sera prête à accueillir le déploiement de l'agent Wazuh pour une supervision continue sur des bases saines.
 
-> [!LINKS] Fiches techniques de déploiement
+> [!NOTE] 
+> **Fiches techniques de déploiement**
 > 
 > Les détails d'implémentation de chaque ligne de cette matrice se trouvent dans les documents dédiés :
 > 

@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!NOTE] 
+> **Contexte**
 > 
 > Le Manager Wazuh étant opérationnel, il est nécessaire de déployer l'agent de collecte sur l'ensemble du parc Windows (Serveurs et Postes Clients). Pour automatiser cette tâche et garantir que toute nouvelle machine jointe au domaine soit immédiatement supervisée, le déploiement est réalisé via une Stratégie de Groupe (GPO) couplée à un script d'installation silencieuse.
 
-> [!NOTE] Architecture de Déploiement
+> [!NOTE] 
+> **Architecture de Déploiement**
 > 
 > |**Machine**|**Rôle**|**IP**|
 > |---|---|---|
@@ -88,11 +90,13 @@ Dans le cadre d'un audit de sécurité, la couverture de la supervision est un c
 
 En liant l'installation de l'agent de sécurité au processus d'amorçage même de l'Active Directory via GPO, l'infrastructure devient "Secure by Default". Toute machine intégrant le domaine est automatiquement contrainte de remonter ses journaux d'événements au SIEM, garantissant une visibilité totale et continue (Maintien en Condition de Sécurité).
 
-> [!SUCCESS] Résultat final
+> [!TIP] 
+> **Résultat final**
 > 
 > Le parc informatique est intégralement supervisé. Le déploiement par script permet une mise à l'échelle immédiate sans intervention manuelle supplémentaire.
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Architecture et Deploiement du Manager]] — Serveur de destination des agents.
 >     

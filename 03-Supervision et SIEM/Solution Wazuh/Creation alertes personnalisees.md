@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!NOTE] 
+> **Contexte**
 > 
 > Bien que Wazuh dispose d'un vaste ensemble de règles par défaut (basées sur Sigma et MITRE ATT&CK), une supervision efficace nécessite la création de règles spécifiques au contexte de l'entreprise. Ce document détaille la procédure de création d'une règle personnalisée visant à détecter instantanément toute modification suspecte des groupes à hauts privilèges de l'Active Directory (notamment le groupe "Admins du domaine", de niveau Tier 0).
 
-> [!NOTE] Cible de Détection
+> [!NOTE] 
+> **Cible de Détection**
 > 
 > |**Scénario de Menace**|**Source**|**Event ID (Windows)**|**Niveau d'Alerte Wazuh**|
 > |---|---|---|---|
@@ -72,11 +74,13 @@ Si cette alerte (Niveau 12 - Critique) se déclenche en dehors d'une fenêtre de
 
 L'action immédiate de remédiation consistera à isoler le poste source identifié dans l'alerte (`$(win.eventdata.subjectUserName)`) et à désactiver le compte nouvellement promu.
 
-> [!SUCCESS] Résultat final
+> [!TIP] 
+> **Résultat final**
 > 
 > Le SIEM n'est plus un simple puits de logs passif. Il est désormais configuré pour rechercher activement des tactiques de compromission spécifiques à l'environnement Active Directory. La boucle de sécurité (Audit $\rightarrow$ Remédiation $\rightarrow$ Supervision) est bouclée.
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Collecte des logs Active Directory]] — Prérequis : configuration de l'EventChannel sur le serveur cible.
 >     

@@ -1,8 +1,10 @@
-> [!INFO] Contexte
+> [!NOTE] 
+> **Contexte**
 > 
 > Ce document définit le cadre méthodologique de l'audit de sécurité réalisé sur l'infrastructure Active Directory. Cette intervention s'inscrit dans les travaux d'évaluation pour le certificat de compétences professionnelles "Participer à la gestion de la cybersécurité". L'objectif est d'évaluer le niveau de sécurité d'un environnement Windows Server 2019, d'identifier les vulnérabilités de configuration, d'appliquer les remédiations nécessaires, et de préparer le terrain pour un maintien en condition de sécurité via le déploiement de Wazuh.
 
-> [!NOTE] Périmètre Technique
+> [!NOTE] 
+> **Périmètre Technique**
 > 
 > |**Machine**|**OS**|**Rôle dans l'audit**|
 > |---|---|---|
@@ -52,7 +54,8 @@ Le rapport HTML généré est décortiqué pour classer les vulnérabilités sel
 
 À l'issue de l'exécution de cette méthodologie, les résultats sont consolidés pour préparer la phase de sécurisation.
 
-> [!SUCCESS] Résultat attendu
+> [!TIP] 
+> **Résultat attendu**
 > 
 > - Un état des lieux clair de la surface d'attaque du serveur Windows 2019.
 >     
@@ -61,7 +64,8 @@ Le rapport HTML généré est décortiqué pour classer les vulnérabilités sel
 > - L'établissement d'une feuille de route pour les remédiations (GPO, LAPS, désactivation de protocoles).
 >     
 
-> [!LINKS] Documents liés
+> [!NOTE] 
+> **Documents liés**
 > 
 > - [[Analyse PingCastle]] — Rapport détaillé des vulnérabilités découvertes.
 >     
