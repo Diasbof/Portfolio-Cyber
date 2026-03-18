@@ -29,14 +29,14 @@ Le tableau ci-dessous répertorie les actions correctives par ordre de priorité
 
 Afin d'éviter toute interruption de service lors de l'application de ces correctifs, la méthodologie suivante est appliquée pour chaque remédiation :
 
-1. **Phase de Test :** Application de la GPO sur une Unité d'Organisation (OU) de test contenant une machine virtuelle représentative.
-    
-2. **Validation :** Vérification de la bonne application de la stratégie via la commande `gpresult /r` et test des processus métiers.
-    
-3. **Déploiement en Production :** Liaison de la GPO sur l'OU cible définitive.
-    
-4. **Documentation :** Rédaction de la fiche technique détaillant la configuration exacte.
-    
+1.**Phase de Test :** Application de la GPO sur une Unité d'Organisation (OU) de test contenant une machine virtuelle représentative.
+
+2.**Validation :** Vérification de la bonne application de la stratégie via la commande `gpresult /r` et test des processus métiers.
+
+3.**Déploiement en Production :** Liaison de la GPO sur l'OU cible définitive.
+
+4.**Documentation :** Rédaction de la fiche technique détaillant la configuration exacte.
+
 
 > [!TIP] 
 > **Objectif de Sécurisation**

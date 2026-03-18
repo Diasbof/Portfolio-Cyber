@@ -18,22 +18,22 @@
 L'analyse de l'environnement Active Directory vise à contrôler plusieurs points critiques de l'infrastructure :
 
 - **Gestion des identités et des accès :** Vérification de la politique de mots de passe et de l'hygiène des comptes privilégiés.
-    
+
 - **Sécurité des configurations (GPO) :** Identification des stratégies obsolètes ou dangereuses (mots de passe en clair, partages non sécurisés).
-    
+
 - **Analyse des chemins de compromission :** Détection des mauvaises délégations de droits permettant une élévation de privilèges.
-    
+
 - **Protocoles réseau :** Détection des protocoles vulnérables actifs (LLMNR, NBT-NS, SMBv1).
-    
+
 
 ## 2. Outils de diagnostic et de collecte
 
 Afin de réaliser une évaluation standardisée et reconnue, les outils suivants sont utilisés depuis le poste d'audit connecté au domaine :
 
 - **PingCastle :** Outil principal pour évaluer le niveau de risque de l'Active Directory, générer une cartographie des anomalies et fournir un score de santé.
-    
+
 - **Scripts PowerShell natifs (Module ActiveDirectory) :** Pour l'extraction manuelle d'informations spécifiques (comptes inactifs, groupes locaux).
-    
+
 
 ## 3. Déroulement des opérations
 

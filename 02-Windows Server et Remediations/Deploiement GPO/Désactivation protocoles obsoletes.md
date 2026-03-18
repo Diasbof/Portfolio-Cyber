@@ -19,12 +19,12 @@ La désactivation de LLMNR est nativement prise en charge par les modèles d'adm
 
 **Chemin de configuration dans l'éditeur de GPO :**
 
-1. Naviguer vers : `Configuration ordinateur` → `Stratégies` → `Modèles d'administration` → `Réseau` → `Client DNS`
-    
-2. Ouvrir le paramètre : **Désactiver la résolution de noms multidiffusion (LLMNR)**
-    
-3. Sélectionner : **Activé**
-    
+1.Naviguer vers : `Configuration ordinateur` → `Stratégies` → `Modèles d'administration` → `Réseau` → `Client DNS`
+
+2.Ouvrir le paramètre : **Désactiver la résolution de noms multidiffusion (LLMNR)**
+
+3.Sélectionner : **Activé**
+
 
 ## 2. Désactivation de NBT-NS (NetBIOS over TCP/IP)
 
@@ -34,18 +34,18 @@ Contrairement à LLMNR, il n'existe pas de paramètre GPO natif simple pour dés
 
 Si le serveur Windows gère le DHCP du réseau client, il est possible de pousser la désactivation directement via le bail IP.
 
-1. Ouvrir la console **DHCP** (`dhcpmgmt.msc`).
-    
-2. Développer l'étendue IPv4 concernée → **Options d'étendue**.
-    
-3. Clic droit → **Configurer les options** → onglet **Avancé**.
-    
-4. Choisir la classe de fournisseur : `Options Microsoft standard`.
-    
-5. Cocher l'option **001 Option de désactivation NetBIOS de Microsoft**.
-    
-6. Définir la valeur sur : `0x2` (Désactiver NetBIOS sur TCP/IP).
-    
+1.Ouvrir la console **DHCP** (`dhcpmgmt.msc`).
+
+2.Développer l'étendue IPv4 concernée → **Options d'étendue**.
+
+3 Clic droit → **Configurer les options** → onglet **Avancé**.
+
+4.Choisir la classe de fournisseur : `Options Microsoft standard`.
+
+5.Cocher l'option **001 Option de désactivation NetBIOS de Microsoft**.
+
+6.Définir la valeur sur : `0x2` (Désactiver NetBIOS sur TCP/IP).
+
 
 ### Option B — Pour les serveurs (IP Statiques via GPO / PowerShell)
 

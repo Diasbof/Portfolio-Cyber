@@ -38,14 +38,14 @@ Set-AdmPwdComputerSelfPermission -Identity "OU=Serveurs,DC=fsec,DC=lan"
 
 L'agent LAPS (fichier `.msi`) doit être installé sur toutes les machines cibles. La méthodologie employée est similaire à celle utilisée pour le déploiement de l'agent GLPI.
 
-1. Création d'un partage réseau sécurisé sur SRV-AD01 (ex: `\\10.10.20.10\Deploiement$\LAPS`).
-    
-2. Création d'une GPO nommée `Deploy-Agent-LAPS` liée aux OU `Postes-Clients` et `Serveurs`.
-    
-3. Dans la GPO : `Configuration ordinateur -> Stratégies -> Paramètres logiciels -> Installation de logiciel`.
-    
-4. Ajout du package `LAPS.x64.msi` en mode **Attribué**.
-    
+1.Création d'un partage réseau sécurisé sur SRV-AD01 (ex: `\\10.10.20.10\Deploiement$\LAPS`).
+
+2.Création d'une GPO nommée `Deploy-Agent-LAPS` liée aux OU `Postes-Clients` et `Serveurs`.
+
+3 Dans la GPO : `Configuration ordinateur -> Stratégies -> Paramètres logiciels -> Installation de logiciel`.
+
+4 Ajout du package `LAPS.x64.msi` en mode **Attribué**.
+
 
 ## 3. Configuration de la Stratégie de Sécurité LAPS
 
@@ -58,15 +58,15 @@ Chemin dans l'éditeur de stratégie :
 Paramètres appliqués :
 
 - **Enable local admin password management :** Activé.
-    
+
 - **Password Settings :**
-    
-    - Complexité : Lettres majuscules, minuscules, chiffres, caractères spéciaux.
-        
-    - Longueur : 16 caractères.
-        
-    - Âge maximum : 30 jours.
-        
+
+- Complexité : Lettres majuscules, minuscules, chiffres, caractères spéciaux.
+   
+- Longueur : 16 caractères.
+   
+- Âge maximum : 30 jours.
+   
 - **Name of administrator account to manage :** `Administrateur` (ou le nom du compte local renommé si applicable).
     
 

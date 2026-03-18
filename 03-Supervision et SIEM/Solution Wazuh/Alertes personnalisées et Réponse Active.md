@@ -1,4 +1,4 @@
-# Création alertes personnalisées
+# Alertes personnalisées et Réponse Active
 
 > [!NOTE] 
 > **Contexte**
@@ -12,22 +12,35 @@
 > |---|---|---|---|
 > |Élévation de privilèges illégitime|SRV-AD01|4728 / 4732|12 (Critique)|
 
+```mermaid
+sequenceDiagram
+    participant A as Attaquant (Kali)
+    participant W as Windows Server (Agent)
+    participant M as Manager Wazuh
+    
+    A->>W: Tentatives de Brute Force RDP
+    W->>W: Génération Event ID 4625 (Échec)
+    W->>M: Envoi du log en temps réel
+    M->>M: Analyse (Règle 5712 : Brute Force)
+    M-->>W: Commande : Active Response (netsh)
+    W->>W: Blocage de l'IP de l'attaquant (Pare-feu)
+    Note over A,W: Connexion impossible pour l'attaquant
+```
+
 ## 1. Comprendre la structure des règles Wazuh
 
 Le moteur d'analyse de Wazuh fonctionne en deux étapes :
 
-1. **Le Décodeur (Decoder) :** Il extrait les champs pertinents du journal brut (IP source, nom d'utilisateur, ID de l'événement). Pour les logs Windows au format JSON (`EventChannel`), le décodage est natif.
-    
-2. **La Règle (Rule) :** Elle évalue les champs extraits à l'aide d'expressions régulières (Regex) ou de correspondances exactes pour déterminer s'il y a une anomalie, et déclenche une alerte le cas échéant.
-    
+1 **Le Décodeur (Decoder) :** Il extrait les champs pertinents du journal brut (IP source, nom d'utilisateur, ID de l'événement). Pour les logs Windows au format JSON (`EventChannel`), le décodage est natif.
+
+2.**La Règle (Rule) :** Elle évalue les champs extraits à l'aide d'expressions régulières (Regex) ou de correspondances exactes pour déterminer s'il y a une anomalie, et déclenche une alerte le cas échéant.
+
 
 ## 2. Création de la Règle Personnalisée (local_rules.xml)
 
 Pour ne pas altérer les règles système qui sont écrasées lors des mises à jour, la règle personnalisée est ajoutée sur le serveur Wazuh (`SRV-WAZUH`) dans le fichier dédié aux configurations locales : `/var/ossec/etc/rules/local_rules.xml`.
 
 L'objectif de cette règle est d'intercepter l'événement d'ajout à un groupe (Event ID 4728) et de filtrer spécifiquement si la cible est le groupe `Admins du domaine`.
-
-XML
 
 ```
 <group name="windows, active_directory, custom_alerts,">
@@ -50,8 +63,6 @@ _(Note : L'utilisation des variables de type `$(nom_du_champ)` permet d'afficher
 
 Une fois le fichier sauvegardé, le service du Manager doit être redémarré pour compiler les nouvelles règles.
 
-Bash
-
 ```
 # Redémarrage du service Wazuh Manager
 sudo systemctl restart wazuh-manager
@@ -59,14 +70,14 @@ sudo systemctl restart wazuh-manager
 
 **Procédure de test (Simulation d'attaque) :**
 
-1. Sur le contrôleur de domaine (`SRV-AD01`), ouvrir la console _Utilisateurs et ordinateurs Active Directory_.
-    
-2. Créer un utilisateur fictif nommé `hacker_test`.
-    
-3. Ajouter `hacker_test` au groupe `Admins du domaine`.
-    
-4. Vérifier immédiatement le tableau de bord (Dashboard) Wazuh sous la section _Security events_.
-    
+1.Sur le contrôleur de domaine (`SRV-AD01`), ouvrir la console _Utilisateurs et ordinateurs Active Directory_.
+
+2.Créer un utilisateur fictif nommé `hacker_test`.
+
+3.Ajouter `hacker_test` au groupe `Admins du domaine`.
+
+4.Vérifier immédiatement le tableau de bord (Dashboard) Wazuh sous la section _Security events_.
+
 
 ## 4. Exploitation et Réponse à Incident (Le point de vue du Défenseur)
 
@@ -75,6 +86,22 @@ Le groupe "Admins du domaine" détient les clés de l'ensemble de l'infrastructu
 Si cette alerte (Niveau 12 - Critique) se déclenche en dehors d'une fenêtre de maintenance planifiée, le centre d'opérations de sécurité (SOC) doit considérer qu'une compromission de type "Élévation de privilèges" (Privilege Escalation) est en cours.
 
 L'action immédiate de remédiation consistera à isoler le poste source identifié dans l'alerte (`$(win.eventdata.subjectUserName)`) et à désactiver le compte nouvellement promu.
+
+## 5. Automatisation de la réponse (Active Response)
+
+Pour les scénarios d'attaque par force brute (différents de l'alerte sur les groupes d'admins), le Manager a été configuré pour réagir de manière autonome.
+
+**Configuration du blocage (ossec.conf sur le Manager) :** Dès que les règles de force brute (ID 5712) sont déclenchées, le script de pare-feu est activé pour 30 minutes.
+
+
+```
+<active-response>
+  <command>win-firewall-block</command>
+  <location>local</location>
+  <rules_id>5712, 5720</rules_id>
+  <timeout>1800</timeout>
+</active-response>
+```
 
 > [!TIP] 
 > **Résultat final**

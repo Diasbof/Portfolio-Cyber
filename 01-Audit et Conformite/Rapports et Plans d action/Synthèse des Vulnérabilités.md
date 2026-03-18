@@ -28,32 +28,32 @@ Les vulnérabilités identifiées ont été regroupées en trois vecteurs princi
 Ce vecteur regroupe les risques liés aux services par défaut de Windows Server.
 
 - **Spouleur d'impression actif sur le DC (Critique) :** Rend le contrôleur de domaine vulnérable à des attaques de type PrintNightmare, permettant l'exécution de code à distance avec les privilèges SYSTEM.
-    
+
 
 ### B. Protocoles Réseaux Obsolètes
 
 Ce vecteur concerne les flux réseau internes de résolution de noms non sécurisés.
 
 - **LLMNR et NBT-NS actifs (Haute) :** Ces protocoles permettent à un attaquant positionné sur le réseau local d'usurper des ressources et de capturer des empreintes (hash) NTLMv2 lors des requêtes de diffusion (attaque par empoisonnement / relais).
-    
+
 
 ### C. Gestion des Identités et des Accès (IAM)
 
 Ce vecteur cible les faiblesses dans la gestion des comptes et de l'authentification.
 
 - **Mots de passe Administrateur Local partagés (Haute) :** L'absence de rotation ou d'unicité des mots de passe locaux facilite grandement les mouvements latéraux (pass-the-hash) si un seul poste client est compromis.
-    
+
 - **Stratégie de mots de passe insuffisante (Moyenne) :** Les comptes à hauts privilèges ne sont pas soumis à des règles de complexité, de longueur ou de rotation strictes indépendantes du reste des utilisateurs.
-    
+
 
 ## 3. Analyse d'Impact Métier
 
 La non-remédiation de ces vulnérabilités expose directement l'organisation à deux scénarios majeurs :
 
-1. **Déploiement de Ransomware :** Propagation facilitée et accélérée par les mouvements latéraux permis par la mauvaise gestion des mots de passe locaux.
-    
-2. **Fuite de données critiques :** Usurpation d'identité et élévation de privilèges silencieuse via les protocoles de diffusion réseau.
-    
+1.**Déploiement de Ransomware :** Propagation facilitée et accélérée par les mouvements latéraux permis par la mauvaise gestion des mots de passe locaux.
+
+2.**Fuite de données critiques :** Usurpation d'identité et élévation de privilèges silencieuse via les protocoles de diffusion réseau.
+
 
 > [!TIP] 
 > **Prochaine étape**

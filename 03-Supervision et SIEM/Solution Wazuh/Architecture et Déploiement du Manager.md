@@ -1,8 +1,5 @@
 # Architecture et Déploiement du Manager
 
-```mermaid graph LR subgraph "Zone Utilisateurs (LAN)" PC[Postes Clients] end subgraph "Zone Serveurs (Cibles)" DC[DC01 - Windows Server 2019] SQL[Serveur de Bases de Données] end subgraph "Zone de Supervision (SOC)" WAZ[Manager Wazuh - Debian] VT((API VirusTotal)) end PC -.->|Trafic LAN| DC DC -->|Agent : Envoi Logs & Alertes FIM| WAZ SQL -->|Agent : Logs de service| WAZ WAZ -->|Vérification Hash MD5/SHA256| VT VT -->|Verdict de menace (Malicious)| WAZ style DC stroke:#333,stroke-width:2px style WAZ stroke:#333,stroke-width:2px```
-
-
 > [!NOTE] 
 > **Contexte**
 > 
@@ -16,6 +13,32 @@
 > |**Rôle**|**Nom d'hôte**|**OS**|**IP**|
 > |---|---|---|---|
 > |Serveur SIEM central|SRV-WAZUH|Linux Debian 11 (ou Ubuntu 22.04)|10.10.20.100|
+
+```mermaid
+graph TD
+    subgraph "Zone Utilisateurs (LAN)"
+        PC["Postes Clients"]
+    end
+    
+    subgraph "Zone Serveurs (Cibles)"
+        DC["DC01 - Windows Server 2019"]
+        SQL["Serveur de Bases de Données"]
+    end
+    
+    subgraph "Zone de Supervision (SOC)"
+        WAZ["Manager Wazuh - Debian"]
+        VT(("API VirusTotal"))
+    end
+
+    PC -.->|"Trafic LAN"| DC
+    DC -->|"Logs et Alertes FIM"| WAZ
+    SQL -->|"Logs de service"| WAZ
+    WAZ -->|"Verification Hash"| VT
+    VT -->|"Verdict Menace"| WAZ
+    
+    style DC stroke:#333,stroke-width:2px
+    style WAZ stroke:#333,stroke-width:2px
+```
 
 ## 1. Prérequis Système et Matrice des Flux Réseau
 
@@ -31,8 +54,6 @@ Avant l'installation, les ressources matérielles de la machine virtuelle ont é
 
 Le déploiement est réalisé en ligne de commande (CLI) directement sur le serveur Linux, en utilisant le script d'automatisation officiel de Wazuh, qui garantit la configuration des certificats de sécurité internes.
 
-Bash
-
 ```
 # 1. Mise à jour des dépôts du système
 sudo apt-get update && sudo apt-get upgrade -y
@@ -46,8 +67,6 @@ sudo bash wazuh-install.sh -a
 
 À la fin de l'exécution, le script génère les identifiants d'accès administrateur par défaut, qui doivent être extraits et stockés de manière sécurisée (par exemple, dans un gestionnaire de mots de passe type KeePass ou Vaultwarden).
 
-Bash
-
 ```
 # Commande pour retrouver les mots de passe générés si nécessaire
 sudo tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt
@@ -57,12 +76,12 @@ sudo tar -O -xvf wazuh-install-files.tar wazuh-install-files/wazuh-passwords.txt
 
 Une fois l'installation terminée, la plateforme est accessible via un navigateur web.
 
-1. Connexion à l'adresse : `https://10.10.20.100`
-    
-2. Authentification avec l'utilisateur `admin` et le mot de passe généré.
-    
-3. **Mesure de sécurité immédiate :** Remplacement du mot de passe par défaut par un mot de passe complexe respectant la politique de sécurité (via l'onglet _Security_ $\rightarrow$ _Internal users_).
-    
+1 Connexion à l'adresse : `https://10.10.20.100`
+
+2 Authentification avec l'utilisateur `admin` et le mot de passe généré.
+ 
+3 **Mesure de sécurité immédiate :** Remplacement du mot de passe par défaut par un mot de passe complexe respectant la politique de sécurité (via l'onglet _Security_ $\rightarrow$ _Internal users_).
+  
 
 ## 4. Objectif Défensif (Le point de vue du Défenseur)
 

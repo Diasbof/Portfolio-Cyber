@@ -20,18 +20,17 @@ Pour appliquer cette matrice, des GPO spécifiques sont créées et liées à ch
 
 **Exemple de configuration pour l'OU `Serveurs` (GPO : `Securite-RDP-Serveurs`) :**
 
-1. Ouvrir l'éditeur de GPO et naviguer vers :
-    
-    `Configuration ordinateur` $\rightarrow$ `Stratégies` $\rightarrow$ `Paramètres Windows` $\rightarrow$ `Paramètres de sécurité` $\rightarrow$ `Stratégies locales` $\rightarrow$ `Attribution des droits utilisateur`
-    
-2. Configurer **Autoriser l'ouverture de session par les services Bureau à distance** :
-    
-    - Ajouter le groupe : `fsec\GRP-Admins-Serveurs`
-        
-3. Configurer **Interdire l'ouverture de session par les services Bureau à distance** :
-    
-    - Ajouter les groupes : `fsec\Admins du domaine`, `fsec\Utilisateurs du domaine`
-        
+1.Ouvrir l'éditeur de GPO et naviguer vers :
+`Configuration ordinateur` $\rightarrow$ `Stratégies` $\rightarrow$ `Paramètres Windows` $\rightarrow$ `Paramètres de sécurité` $\rightarrow$ `Stratégies locales` $\rightarrow$ `Attribution des droits utilisateur`
+
+2.Configurer **Autoriser l'ouverture de session par les services Bureau à distance** :
+
+- Ajouter le groupe : `fsec\GRP-Admins-Serveurs`
+
+3.Configurer **Interdire l'ouverture de session par les services Bureau à distance** :
+
+- Ajouter les groupes : `fsec\Admins du domaine`, `fsec\Utilisateurs du domaine`
+
 
 _(Cette logique est répliquée avec les groupes correspondants pour les OU `Domain Controllers` et `Postes-Clients`)_.
 
@@ -47,9 +46,9 @@ Restreindre qui peut se connecter est essentiel, mais restreindre depuis où la 
 Dans la même GPO, le flux réseau du port 3389 (RDP) est filtré :
 
 - Naviguer vers : `Configuration ordinateur` $\rightarrow$ `Stratégies` $\rightarrow$ `Paramètres Windows` $\rightarrow$ `Paramètres de sécurité` $\rightarrow$ `Pare-feu Windows Defender avec fonctions avancées`
-    
+
 - Règle entrante : Autoriser le port TCP 3389 **uniquement** depuis les adresses IP du sous-réseau d'administration (VLAN_ADM) ou du serveur de rebond.
-    
+
 
 ## 3. Analyse des Risques (Le point de vue du Défenseur)
 

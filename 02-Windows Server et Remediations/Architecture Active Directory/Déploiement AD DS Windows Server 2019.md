@@ -13,22 +13,42 @@
 > |Contrôleur de Domaine (PDC)|SRV-AD01|10.10.20.10|fsec.lan|
 > |Serveur Membre (Applicatif)|SRV-GLPI|10.10.20.50|fsec.lan|
 
+```mermaid
+graph LR
+    Root["Domaine : occitanie.lan"]
+    Root --- GPO_Def["GPO : Default Domain Policy (Mots de passe 14 car.)"]
+    
+    Root --> OU_Admin["OU : Administration"]
+    OU_Admin --> GPO_LAPS["GPO : Déploiement Microsoft LAPS"]
+    OU_Admin --> GPO_Prot["GPO : Protected Users (Admin privilèges)"]
+    
+    Root --> OU_Prod["OU : Production"]
+    OU_Prod --> GPO_Hardening["GPO : Hardening (Désactivation SMBv1 / LLMNR)"]
+    OU_Prod --> GPO_Audit["GPO : Stratégie d'Audit Avancée (Events 4625/4768)"]
+    
+    OU_Prod --> OU_Servers["OU : Serveurs"]
+    OU_Prod --> OU_Workstations["OU : Postes Clients"]
+
+    style Root fill:#e1f5fe,stroke:#01579b,stroke-width:2px
+    style GPO_Def fill:#fff9c4,stroke:#fbc02d
+    style GPO_LAPS fill:#fff9c4,stroke:#fbc02d
+    style GPO_Hardening fill:#fff9c4,stroke:#fbc02d
+```
 ## 1. Prérequis et Configuration Initiale
 
 Avant la promotion du serveur en contrôleur de domaine, les configurations systèmes suivantes ont été appliquées pour garantir la stabilité de l'annuaire :
 
 - **Adressage IP statique :** Configuration de la carte réseau avec l'IP `10.10.20.10`.
-    
+
 - **DNS local :** Le serveur pointe vers lui-même (`127.0.0.1`) pour la résolution DNS primaire.
-    
+
 - **Nommage standardisé :** Renommage de la machine en `SRV-AD01` avant la jonction au domaine.
-    
+
 
 ## 2. Structure Logique : Unités d'Organisation (OU)
 
 Afin d'appliquer le principe de moindre privilège et de préparer les remédiations de sécurité, l'arborescence par défaut a été remplacée par une structure personnalisée. Cette ségrégation permet de ne pas mélanger les comptes administrateurs (Tier 0) avec les utilisateurs standards.
 
-Plaintext
 
 ```
 fsec.lan
@@ -52,10 +72,10 @@ fsec.lan
 
 ### Avantages Sécurité de cette architecture :
 
-1. **Ciblage GPO précis :** Il est possible d'appliquer une stratégie de sécurité très stricte (ex: blocage RDP) uniquement sur l'OU `Postes-Clients` sans impacter les `Serveurs`.
-    
-2. **Délégation de contrôle :** Possibilité de donner à un technicien le droit de réinitialiser les mots de passe uniquement dans l'OU `Utilisateurs`, sans qu'il n'ait d'impact sur l'OU `Administration`.
-    
+1.**Ciblage GPO précis :** Il est possible d'appliquer une stratégie de sécurité très stricte (ex: blocage RDP) uniquement sur l'OU `Postes-Clients` sans impacter les `Serveurs`.
+
+2.**Délégation de contrôle :** Possibilité de donner à un technicien le droit de réinitialiser les mots de passe uniquement dans l'OU `Utilisateurs`, sans qu'il n'ait d'impact sur l'OU `Administration`.
+
 
 ## 3. Déploiement Automatisé (Scripting)
 

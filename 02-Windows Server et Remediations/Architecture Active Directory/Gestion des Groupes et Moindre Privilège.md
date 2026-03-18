@@ -23,9 +23,9 @@ Plutôt que d'attribuer des droits directement aux utilisateurs, une approche RB
 Groupes créés pour la gestion quotidienne :
 
 - **`GRP-Helpdesk` :** Possède uniquement les droits de réinitialisation de mots de passe sur l'OU `Utilisateurs`.
-    
+
 - **`GRP-Lecteurs-Audit` :** Possède les droits de lecture sur les journaux d'événements des serveurs (préparation pour l'intégration Wazuh).
-    
+
 
 ## 2. Délégation de Contrôle (Delegation of Control)
 
@@ -33,12 +33,12 @@ Afin d'éviter d'ajouter les techniciens support au groupe "Admins du domaine", 
 
 **Exemple d'implémentation pour le groupe Helpdesk :**
 
-1. Clic droit sur l'Unité d'Organisation `Utilisateurs` $\rightarrow$ **Délégation de contrôle**.
-    
-2. Ajout du groupe `GRP-Helpdesk`.
-    
-3. Sélection de la tâche personnalisée : _Réinitialiser les mots de passe des utilisateurs et forcer le changement au prochain d'ouverture de session_.
-    
+1.Clic droit sur l'Unité d'Organisation `Utilisateurs` $\rightarrow$ **Délégation de contrôle**.
+
+2.Ajout du groupe `GRP-Helpdesk`.
+
+3.Sélection de la tâche personnalisée : _Réinitialiser les mots de passe des utilisateurs et forcer le changement au prochain d'ouverture de session_.
+
 
 ## 3. Sécurisation des Groupes Sensibles
 

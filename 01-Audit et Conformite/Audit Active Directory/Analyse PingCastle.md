@@ -16,7 +16,6 @@
 
 L'outil est exécuté depuis le poste d'audit (membre du domaine) avec un compte utilisateur standard, afin de cartographier les informations accessibles publiquement sur le réseau.
 
-DOS
 
 ```
 REM Lancement interactif de PingCastle
@@ -51,14 +50,14 @@ Voici l'extraction des vulnérabilités critiques et majeures remontées par le 
 
 Pour justifier techniquement la nécessité des remédiations, voici comment un attaquant exploite la faille liée aux protocoles LLMNR/NBT-NS (Règle A-02) :
 
-1. L'attaquant se connecte au réseau local et écoute le trafic avec un outil comme `Responder`.
-    
-2. Un utilisateur tente d'accéder à un partage réseau inexistant ou mal orthographié (ex: `\\partage_fichers`).
-    
-3. Le serveur DNS ne trouvant pas la ressource, le poste client demande au réseau local (en broadcast via LLMNR/NBT-NS) si une machine possède ce nom.
-    
-4. L'attaquant répond frauduleusement, capture le hash NTLMv2 de l'utilisateur, et peut tenter de le casser hors-ligne ou de le relayer vers un autre serveur (Relay Attack).
-    
+1.L'attaquant se connecte au réseau local et écoute le trafic avec un outil comme `Responder`.
+
+2.Un utilisateur tente d'accéder à un partage réseau inexistant ou mal orthographié (ex: `\\partage_fichers`).
+
+3.Le serveur DNS ne trouvant pas la ressource, le poste client demande au réseau local (en broadcast via LLMNR/NBT-NS) si une machine possède ce nom.
+
+4.L'attaquant répond frauduleusement, capture le hash NTLMv2 de l'utilisateur, et peut tenter de le casser hors-ligne ou de le relayer vers un autre serveur (Relay Attack).
+
 
 > [!TIP]
 > **Prochaine étape**
