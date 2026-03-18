@@ -1,3 +1,5 @@
+# Synthèse des Vulnérabilités
+
 > [!INFO] 
 > **Contexte**
 >  Ce document consolide les résultats bruts obtenus lors des phases d'analyse (notamment via PingCastle) pour en extraire une vision globale des risques pesant sur le système d'information. L'objectif est de classifier ces vulnérabilités par vecteur d'attaque afin de structurer et prioriser les futures remédiations.

@@ -1,3 +1,5 @@
+# Stratégie de Mots de Passe fine FGPP
+
 > [!NOTE] 
 > **Contexte**
 > 
@@ -79,5 +81,5 @@ En exigeant 16 caractères minimum pour les comptes à privilèges, le temps de 
 > 
 > - [[Matrice de Remediation]] — Validation de l'action REM-05.
 >     
-> - [[Gestion des Groupes et Moindre Privilege]] — Groupes cibles de cette stratégie.
+> - [[Gestion des Groupes et Moindre Privilège]] — Groupes cibles de cette stratégie.
 >

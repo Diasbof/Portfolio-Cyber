@@ -1,3 +1,5 @@
+# Collecte des logs Active Directory
+
 > [!NOTE] 
 > **Contexte**
 > 
@@ -81,7 +83,7 @@ Grâce à cette collecte ciblée, le Manager Wazuh dispose de la matière premi�
 > [!NOTE] 
 > **Documents liés**
 > 
-> - [[Architecture et Deploiement du Manager]] — Serveur central réceptionnant ces logs.
+> - [[Architecture et Déploiement du Manager]] — Serveur central réceptionnant ces logs.
 >     
-> - [[Creation alertes personnalisees]] — Étape suivante : traduire ces logs en notifications de sécurité actives.
+> - [[Création alertes personnalisées]] — Étape suivante : traduire ces logs en notifications de sécurité actives.
 >

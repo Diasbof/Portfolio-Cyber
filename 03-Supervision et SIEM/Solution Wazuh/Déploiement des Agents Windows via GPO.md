@@ -1,3 +1,5 @@
+# Déploiement des Agents Windows via GPO
+
 > [!NOTE] 
 > **Contexte**
 > 
@@ -98,7 +100,7 @@ En liant l'installation de l'agent de sécurité au processus d'amorçage même 
 > [!NOTE] 
 > **Documents liés**
 > 
-> - [[Architecture et Deploiement du Manager]] — Serveur de destination des agents.
+> - [[Architecture et Déploiement du Manager]] — Serveur de destination des agents.
 >     
 > - [[Collecte des logs Active Directory]] — Configuration spécifique poussée sur le contrôleur de domaine après l'installation de cet agent.
 >

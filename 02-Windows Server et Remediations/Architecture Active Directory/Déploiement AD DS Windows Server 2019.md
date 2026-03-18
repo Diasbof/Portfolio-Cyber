@@ -1,3 +1,5 @@
+# Déploiement AD DS Windows Server 2019
+
 > [!INFO] 
 > **Contexte**
 > 
@@ -74,7 +76,7 @@ New-ADOrganizationalUnit -Name "Postes-Clients" -Path "DC=fsec,DC=lan" -Protecte
 > [!NOTE] 
 > **Documents liés**
 > 
-> - [[Gestion des Groupes et Moindre Privilege]] — Détail des groupes de sécurité et délégations.
+> - [[Gestion des Groupes et Moindre Privilège]] — Détail des groupes de sécurité et délégations.
 >     
 > - [[Matrice de Remediation]] — Plan d'action des GPO à appliquer sur cette architecture.
 >

@@ -1,3 +1,5 @@
+# Restriction des accès RDP
+
 > [!NOTE] 
 > **Contexte**
 > 
@@ -67,7 +69,7 @@ En interdisant techniquement (Deny RDP Logon) la connexion des comptes Tier 0 su
 > [!NOTE] 
 > **Documents liés**
 > 
-> - [[Gestion des Groupes et Moindre Privilege]] — Groupes de sécurité utilisés dans cette GPO.
+> - [[Gestion des Groupes et Moindre Privilège]] — Groupes de sécurité utilisés dans cette GPO.
 >     
 > - [[Matrice de Remediation]] — Validation du plan d'action (REM-04).
 >

@@ -1,3 +1,5 @@
+# Désactivation protocoles obsoletes
+
 > [!NOTE] 
 > **Contexte**
 >  Le rapport d'audit PingCastle a mis en évidence l'activation par défaut des protocoles de résolution de noms de diffusion (LLMNR et NetBIOS sur TCP/IP). Ces protocoles historiques sont aujourd'hui considérés comme des vulnérabilités majeures (Vulnérabilité REM-02), car ils permettent à un attaquant de réaliser des attaques par empoisonnement (Poisoning) et des relais NTLM. Ce document détaille les procédures pour les éradiquer du domaine.

@@ -1,3 +1,5 @@
+# Création alertes personnalisées
+
 > [!NOTE] 
 > **Contexte**
 > 
@@ -84,5 +86,5 @@ L'action immédiate de remédiation consistera à isoler le poste source identif
 > 
 > - [[Collecte des logs Active Directory]] — Prérequis : configuration de l'EventChannel sur le serveur cible.
 >     
-> - [[Gestion des Groupes et Moindre Privilege]] — Documentation justifiant la criticité du groupe "Admins du domaine".
+> - [[Gestion des Groupes et Moindre Privilège]] — Documentation justifiant la criticité du groupe "Admins du domaine".
 >

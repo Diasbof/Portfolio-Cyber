@@ -1,3 +1,5 @@
+# Matrice de Remediation
+
 > [!NOTE] 
 > **Contexte**
 > 
@@ -46,11 +48,11 @@ Afin d'éviter toute interruption de service lors de l'application de ces correc
 > 
 > Les détails d'implémentation de chaque ligne de cette matrice se trouvent dans les documents dédiés :
 > 
-> - [[Desactivation protocoles obsoletes]] _(Traite REM-01 et REM-02)_
+> - [[Désactivation protocoles obsoletes]] _(Traite REM-01 et REM-02)_
 >     
-> - [[Deploiement LAPS]] _(Traite REM-03)_
+> - [[Déploiement LAPS]] _(Traite REM-03)_
 >     
-> - [[Restriction des acces RDP]] _(Traite REM-04)_
+> - [[Restriction des accès RDP]] _(Traite REM-04)_
 >     
-> - [[Strategie de Mots de Passe fine FGPP]] _(Traite REM-05)_
+> - [[Stratégie de Mots de Passe fine FGPP]] _(Traite REM-05)_
 >

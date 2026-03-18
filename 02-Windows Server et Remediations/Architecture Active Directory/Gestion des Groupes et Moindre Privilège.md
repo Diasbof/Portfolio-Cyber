@@ -1,3 +1,5 @@
+# Gestion des Groupes et Moindre Privilège
+
 > [!INFO] 
 > **Contexte**
 > 
@@ -59,9 +61,9 @@ De plus, le groupe `Protected Users` natif de Windows Server a été exploité p
 > [!NOTE] 
 > **Documents liés**
 > 
-> - [[Deploiement AD DS Windows Server 2019]] — Architecture des Unités d'Organisation.
+> - [[Déploiement AD DS Windows Server 2019]] — Architecture des Unités d'Organisation.
 >     
-> - [[Restriction des acces RDP]] — GPO verrouillant techniquement ce modèle de Tiering.
+> - [[Restriction des accès RDP]] — GPO verrouillant techniquement ce modèle de Tiering.
 >     
-> - [[Deploiement LAPS]] — Gestion des comptes administrateurs locaux.
+> - [[Déploiement LAPS]] — Gestion des comptes administrateurs locaux.
 >

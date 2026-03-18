@@ -1,3 +1,5 @@
+# Analyse PingCastle
+
 > [!NOTE] 
 > **Contexte** 
 > 
@@ -66,9 +68,9 @@ Pour justifier techniquement la nécessité des remédiations, voici comment un 
 > [!NOTE]
 >  **Pages liées**
 > 
-> - [[Methodologie Audit AD]] — Cadre global de l'évaluation.
+> - [[Méthodologie Audit AD]] — Cadre global de l'évaluation.
 >     
 > - [[Matrice de Remediation]] — Suivi du plan d'action.
 >     
-> - [[Desactivation protocoles obsoletes]] — Procédure de correction pour la faille A-02.
+> - [[Désactivation protocoles obsoletes]] — Procédure de correction pour la faille A-02.
 >

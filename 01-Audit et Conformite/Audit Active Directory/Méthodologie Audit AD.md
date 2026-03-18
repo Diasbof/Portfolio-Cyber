@@ -1,3 +1,5 @@
+# Méthodologie Audit AD
+
 > [!NOTE] 
 > **Contexte**
 > 
@@ -69,7 +71,7 @@ Le rapport HTML généré est décortiqué pour classer les vulnérabilités sel
 > 
 > - [[Analyse PingCastle]] — Rapport détaillé des vulnérabilités découvertes.
 >     
-> - [[Synthese des Vulnerabilites]] — Classification et criticité.
+> - [[Synthèse des Vulnérabilités]] — Classification et criticité.
 >     
 > - [[Matrice de Remediation]] — Plan d'action des corrections à déployer.
 >

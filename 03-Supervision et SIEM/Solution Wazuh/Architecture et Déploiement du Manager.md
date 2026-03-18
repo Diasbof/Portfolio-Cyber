@@ -1,3 +1,8 @@
+# Architecture et Déploiement du Manager
+
+```mermaid graph LR subgraph "Zone Utilisateurs (LAN)" PC[Postes Clients] end subgraph "Zone Serveurs (Cibles)" DC[DC01 - Windows Server 2019] SQL[Serveur de Bases de Données] end subgraph "Zone de Supervision (SOC)" WAZ[Manager Wazuh - Debian] VT((API VirusTotal)) end PC -.->|Trafic LAN| DC DC -->|Agent : Envoi Logs & Alertes FIM| WAZ SQL -->|Agent : Logs de service| WAZ WAZ -->|Vérification Hash MD5/SHA256| VT VT -->|Verdict de menace (Malicious)| WAZ style DC stroke:#333,stroke-width:2px style WAZ stroke:#333,stroke-width:2px```
+
+
 > [!NOTE] 
 > **Contexte**
 > 
@@ -73,5 +78,6 @@ Le Manager Wazuh agit comme le "cerveau" de l'infrastructure de défense. Il ne 
 > [!NOTE] 
 > **Documents liés**
 > 
-> - [[Deploiement des Agents Windows via GPO]] — Étape suivante : connecter le parc au Manager.
->
+> - [[Déploiement des Agents Windows via GPO]] — Étape suivante : connecter le parc au Manager.
+
+

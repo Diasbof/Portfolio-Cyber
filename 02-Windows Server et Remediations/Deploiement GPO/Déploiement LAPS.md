@@ -1,3 +1,5 @@
+# Déploiement LAPS
+
 > [!NOTE] 
 > **Contexte**
 > 
@@ -98,5 +100,5 @@ Si ce mot de passe est identique sur tout le parc, l'attaquant utilise la techni
 > 
 > - [[Matrice de Remediation]] — Validation de la correction REM-03.
 >     
-> - [[Gestion des Groupes et Moindre Privilege]] — Groupes autorisés à consulter les attributs LAPS.
+> - [[Gestion des Groupes et Moindre Privilège]] — Groupes autorisés à consulter les attributs LAPS.
 >
