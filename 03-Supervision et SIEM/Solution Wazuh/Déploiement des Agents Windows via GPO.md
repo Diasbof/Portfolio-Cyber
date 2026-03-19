@@ -27,9 +27,7 @@ L'installeur MSI de l'agent Wazuh et le script de déploiement doivent être acc
 
 **Contenu du script `install_wazuh_agent.bat` :**
 
-DOS
-
-```
+```DOS
 @echo off
 REM Verifie si l'agent Wazuh est deja installe
 if exist "C:\Program Files (x86)\ossec-agent\win32ui.exe" (
@@ -57,14 +55,14 @@ Une nouvelle stratégie de groupe nommée `Deploy-Wazuh-Agent` est créée dans 
     
 2. Naviguer vers : `Configuration ordinateur` $\rightarrow$ `Stratégies` $\rightarrow$ `Paramètres Windows` $\rightarrow$ `Scripts (démarrage/arrêt)`.
     
-3. Double-cliquer sur **Démarrage** $\rightarrow$ **Ajouter**.
-    
-4. Dans **Nom du script**, renseigner le chemin réseau absolu :
-    
-    `\\10.10.20.10\Application$\Wazuh-Agent\install_wazuh_agent.bat`
-    
-5. Valider et fermer l'éditeur.
-    
+3.Double-cliquer sur **Démarrage** $\rightarrow$ **Ajouter**.
+
+4.Dans **Nom du script**, renseigner le chemin réseau absolu :
+
+`\\10.10.20.10\Application$\Wazuh-Agent\install_wazuh_agent.bat`
+
+5.Valider et fermer l'éditeur.
+
 
 ## 3. Vérification de l'Enrôlement
 
@@ -72,9 +70,7 @@ Pour valider le bon fonctionnement de la GPO, un redémarrage est forcé sur un 
 
 **Sur le poste client (Vérification locale) :**
 
-DOS
-
-```
+```DOS
 REM Le service est-il en cours d'exécution ?
 sc query WazuhSvc
 

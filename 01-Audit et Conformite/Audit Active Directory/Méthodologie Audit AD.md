@@ -41,9 +41,7 @@ Afin de réaliser une évaluation standardisée et reconnue, les outils suivants
 
 L'audit est réalisé avec un compte utilisateur standard du domaine, démontrant la quantité d'informations accessibles sans privilèges administratifs (principe de l'assume breach).
 
-PowerShell
-
-```
+```PowerShell
 REM Exemple de lancement de PingCastle depuis le poste d'audit
 PingCastle.exe --healthcheck --server 10.10.10.10
 ```

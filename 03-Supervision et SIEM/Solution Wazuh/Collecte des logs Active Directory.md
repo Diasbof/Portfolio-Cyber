@@ -38,9 +38,7 @@ Une fois les journaux générés par Windows, l'agent Wazuh installé sur le con
 
 Le bloc `<localfile>` est ajouté ou vérifié pour utiliser le format natif `EventChannel` de Windows, garantissant une remontée structurée et performante :
 
-XML
-
-```
+```XML
 <localfile>
   <location>Security</location>
   <log_format>eventchannel</log_format>

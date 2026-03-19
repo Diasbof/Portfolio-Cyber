@@ -20,9 +20,7 @@ Avant de déployer la stratégie, l'Active Directory doit être préparé pour a
 
 Depuis le contrôleur de domaine (SRV-AD01), dans une console PowerShell en tant qu'administrateur :
 
-PowerShell
-
-```
+```PowerShell
 REM 1. Importation du module LAPS
 Import-Module AdmPwd.PS
 
@@ -74,9 +72,7 @@ Paramètres appliqués :
 
 Par défaut, les utilisateurs ayant des droits étendus sur l'AD pourraient lire ces mots de passe en clair. Une restriction stricte des permissions de lecture (ACL) est donc configurée.
 
-PowerShell
-
-```
+```PowerShell
 REM Retirer les droits de lecture étendus aux groupes non autorisés
 Remove-AdmPwdExtendedRights -Identity "OU=Postes-Clients,DC=fsec,DC=lan" -Principals "Utilisateurs du domaine"
 

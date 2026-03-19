@@ -44,9 +44,7 @@ Afin d'éviter d'ajouter les techniciens support au groupe "Admins du domaine", 
 
 Pour prévenir l'ajout non autorisé d'utilisateurs dans les groupes critiques (Admin du domaine, Admins de l'entreprise), une surveillance active des groupes natifs (Protected Users, Domain Admins) est mise en place.
 
-PowerShell
-
-```
+```PowerShell
 REM Vérification régulière des membres du groupe Admins du domaine
 Get-ADGroupMember -Identity "Admins du domaine" | Select-Object Name, objectClass
 ```

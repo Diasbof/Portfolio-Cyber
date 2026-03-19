@@ -20,9 +20,7 @@ Contrairement aux stratégies classiques, les FGPP ne se configurent pas via l'�
 
 L'approche par script est privilégiée pour assurer la traçabilité du déploiement. Sur le contrôleur de domaine (`SRV-AD01`), la commande suivante est exécutée en tant qu'administrateur :
 
-PowerShell
-
-```
+```PowerShell
 REM Création de la stratégie stricte pour les administrateurs
 New-ADFineGrainedPasswordPolicy -Name "FGPP-Admins-Tier0-Tier1" `
     -Precedence 10 `
@@ -45,9 +43,7 @@ _(Note : La précédence de 10 assure que cette stratégie s'appliquera en prior
 
 Une fois l'objet PSO créé, il doit être lié aux groupes d'utilisateurs concernés. Il est fortement déconseillé de lier une FGPP directement à des utilisateurs individuels pour des raisons de maintenabilité.
 
-PowerShell
-
-```
+```PowerShell
 REM Application de la FGPP aux groupes de niveau Tier 0 et Tier 1
 Add-ADFineGrainedPasswordPolicySubject -Identity "FGPP-Admins-Tier0-Tier1" -Subjects "Admins du domaine", "GRP-Admins-Serveurs"
 ```
@@ -56,9 +52,7 @@ Add-ADFineGrainedPasswordPolicySubject -Identity "FGPP-Admins-Tier0-Tier1" -Subj
 
 Pour valider que la stratégie prend bien le pas sur la GPO du domaine par défaut (Default Domain Policy), il est possible d'interroger un compte administrateur spécifique.
 
-PowerShell
-
-```
+```PowerShell
 REM Vérifier quelle politique de mot de passe s'applique réellement à l'utilisateur Administrateur
 Get-ADUserResultantPasswordPolicy -Identity "Administrateur"
 ```

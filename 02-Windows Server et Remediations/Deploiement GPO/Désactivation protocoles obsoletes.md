@@ -51,9 +51,7 @@ Si le serveur Windows gère le DHCP du réseau client, il est possible de pousse
 
 Pour les serveurs (Tier 0 et Tier 1) configurés en IP statique, un script PowerShell de démarrage est déployé via une GPO (`Securite-Reseau-DesactiverNetBIOS-Serveurs`).
 
-PowerShell
-
-```
+```PowerShell
 # Script : disable_netbios.ps1
 # Ce script parcourt toutes les cartes réseau actives et désactive NetBIOS
 $adapters = Get-WmiObject Win32_NetworkAdapterConfiguration | Where-Object { $_.IPEnabled -eq $true }
@@ -70,18 +68,14 @@ Pour valider que l'infrastructure n'est plus vulnérable, les vérifications sui
 
 **Vérification de la GPO LLMNR via le Registre :**
 
-DOS
-
-```
+```DOS
 REM La valeur EnableMulticast doit être à 0
 reg query "HKLM\Software\Policies\Microsoft\Windows NT\DNSClient" /v EnableMulticast
 ```
 
 **Vérification de NetBIOS :**
 
-DOS
-
-```
+```DOS
 ipconfig /all
 ```
 

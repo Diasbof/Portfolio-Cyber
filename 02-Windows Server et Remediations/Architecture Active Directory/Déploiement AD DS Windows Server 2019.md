@@ -81,9 +81,7 @@ fsec.lan
 
 Pour simuler un environnement d'entreprise réaliste de manière efficace, la création des arborescences, des groupes et des comptes utilisateurs a été scriptée via PowerShell, démontrant une capacité d'automatisation des tâches d'administration.
 
-PowerShell
-
-```
+```PowerShell
 REM Exemple de création d'une OU via le module ActiveDirectory
 New-ADOrganizationalUnit -Name "Postes-Clients" -Path "DC=fsec,DC=lan" -ProtectedFromAccidentalDeletion $true
 ```
