@@ -1,6 +1,6 @@
 # Déploiement AD DS Windows Server 2019
 
-> [!INFO] 
+> [!NOTE] 
 > **Contexte**
 > 
 > Ce document détaille l'architecture logique de l'annuaire Active Directory (AD DS) déployé sur Windows Server 2019. Cette infrastructure sert de socle au réseau d'entreprise simulé dans le cadre de la certification. L'installation a été pensée dès le départ pour faciliter la ségrégation des droits (modèle de Tiering) et l'application granulaire des stratégies de groupe (GPO) de sécurité.

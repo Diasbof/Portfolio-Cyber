@@ -1,6 +1,6 @@
 # Gestion des Groupes et Moindre Privilège
 
-> [!INFO] 
+> [!NOTE] 
 > **Contexte**
 > 
 > À la suite de l'audit de sécurité, il a été constaté que la compromission d'un compte à privilèges constituait un risque majeur (mouvements latéraux et élévation de privilèges). Ce document détaille la refonte de la gestion des accès selon le principe du moindre privilège (Least Privilege) et l'implémentation du modèle de Tiering de Microsoft. L'objectif est de s'assurer qu'aucun administrateur de domaine ne se connecte sur une machine non sécurisée.
