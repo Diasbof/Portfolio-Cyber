@@ -1,67 +1,49 @@
 # Gestion des Groupes et Moindre Privilège
 
-> [!NOTE] 
+> [!NOTE]
 > **Contexte**
 > 
-> À la suite de l'audit de sécurité, il a été constaté que la compromission d'un compte à privilèges constituait un risque majeur (mouvements latéraux et élévation de privilèges). Ce document détaille la refonte de la gestion des accès selon le principe du moindre privilège (Least Privilege) et l'implémentation du modèle de Tiering de Microsoft. L'objectif est de s'assurer qu'aucun administrateur de domaine ne se connecte sur une machine non sécurisée.
+> À la suite de l'audit de sécurité (PingCastle), une gestion permissive des droits élevés a été constatée (comptes sensibles exposés à la délégation, groupes critiques non surveillés). Ce document détaille les actions correctives menées pour assainir les groupes d'administration et appliquer le principe du moindre privilège, afin d'empêcher les élévations de privilèges et le vol de tickets (Kerberoasting).
 
-> [!NOTE] 
-> **Modèle de Tiering (Ségrégation des privilèges)**
-> 
-> L'infrastructure a été divisée en trois niveaux d'administration hermétiques :
-> 
-> |**Niveau**|**Périmètre technique**|**Groupes dédiés créés**|**Règle de sécurité stricte**|
-> |---|---|---|---|
-> |**Tier 0**|Contrôleurs de Domaine (DC), PKI|`Admins du domaine`|Interdiction de se connecter sur les Tier 1 et Tier 2.|
-> |**Tier 1**|Serveurs membres (ex: SRV-GLPI)|`GRP-Admins-Serveurs`|Interdiction de se connecter sur le Tier 2.|
-> |**Tier 2**|Postes de travail (ex: PC-CLIENT)|`GRP-Admins-Postes`|Limité à la gestion du parc bureautique.|
+## 1. Assainissement des Groupes Critiques
 
-## 1. Implémentation des Groupes de Sécurité (RBAC)
+L'audit a révélé que l'hygiène des comptes d'administration n'était pas respectée. Certains comptes possédaient des droits permanents inutiles sur des groupes à très hauts privilèges.
 
-Plutôt que d'attribuer des droits directement aux utilisateurs, une approche RBAC (Role-Based Access Control) a été déployée. Les utilisateurs sont membres de groupes globaux, eux-mêmes imbriqués dans des groupes locaux de domaine qui détiennent les permissions.
+Pour réduire la surface d'attaque, un nettoyage des groupes natifs a été opéré. Par exemple, le compte `Administrateur` a été retiré du groupe **Admins du schéma** (Schema Admins), ce groupe ne devant être utilisé que ponctuellement lors de modifications structurelles profondes de la forêt Active Directory.
 
-Groupes créés pour la gestion quotidienne :
-
-- **`GRP-Helpdesk` :** Possède uniquement les droits de réinitialisation de mots de passe sur l'OU `Utilisateurs`.
-
-- **`GRP-Lecteurs-Audit` :** Possède les droits de lecture sur les journaux d'événements des serveurs (préparation pour l'intégration Wazuh).
-
-
-## 2. Délégation de Contrôle (Delegation of Control)
-
-Afin d'éviter d'ajouter les techniciens support au groupe "Admins du domaine", l'Assistant de délégation de contrôle de l'Active Directory a été utilisé de manière granulaire.
-
-**Exemple d'implémentation pour le groupe Helpdesk :**
-
-1.Clic droit sur l'Unité d'Organisation `Utilisateurs` $\rightarrow$ **Délégation de contrôle**.
-
-2.Ajout du groupe `GRP-Helpdesk`.
-
-3.Sélection de la tâche personnalisée : _Réinitialiser les mots de passe des utilisateurs et forcer le changement au prochain d'ouverture de session_.
-
-
-## 3. Sécurisation des Groupes Sensibles
-
-Pour prévenir l'ajout non autorisé d'utilisateurs dans les groupes critiques (Admin du domaine, Admins de l'entreprise), une surveillance active des groupes natifs (Protected Users, Domain Admins) est mise en place.
-
-```PowerShell
-REM Vérification régulière des membres du groupe Admins du domaine
-Get-ADGroupMember -Identity "Admins du domaine" | Select-Object Name, objectClass
+```powershell
+# Retrait de l'utilisateur Administrateur du groupe Admins du schéma
+Remove-ADGroupMember -Identity "Admins du schéma" -Members "Administrateur" -Confirm:$false
 ```
 
-De plus, le groupe `Protected Users` natif de Windows Server a été exploité pour les comptes Tier 0, leur forçant l'utilisation de Kerberos (désactivation de NTLM) et empêchant la mise en cache de leurs identifiants.
+## 2. Sécurisation via le groupe "Protected Users"
 
-> [!TIP] 
+Pour prévenir le vol de session et la compromission d'identifiants en mémoire (Pass-the-Hash, extraction de tickets type Silver Ticket), les comptes administrateurs ont été intégrés au groupe de sécurité natif **Protected Users**.
+
+
+
+```Powershell
+# Ajout du compte Administrateur au groupe Protected Users
+Add-ADGroupMember -Identity "Protected Users" -Members Administrateur
+```
+
+L'appartenance à ce groupe applique immédiatement des règles de sécurité strictes et non contournables à ces comptes sensibles :
+
+- Désactivation de l'authentification NTLM (forçage de Kerberos).
+    
+- Interdiction de mettre les identifiants en cache (empêche les attaques si l'admin se connecte sur un poste client compromis).
+    
+- Impossibilité de déléguer les identifiants de ce compte.
+
+
+>[!TIP]
 > **Bilan de Sécurisation IAM**
 > 
-> Le modèle de Tiering est logique et prêt à être renforcé techniquement. La prochaine étape consiste à déployer des Stratégies de Groupe (GPO) pour interdire matériellement (via les droits User Rights Assignment) la connexion interactive des comptes Tier 0 sur les machines Tier 1 et 2.
+> L'hygiène des comptes à privilèges a été restaurée. Les comptes sensibles sont désormais protégés par le groupe `Protected Users` et la surface d'attaque liée aux groupes critiques a été réduite au strict minimum. La prochaine étape consiste à déployer la rotation automatique des mots de passe pour les administrateurs locaux via LAPS.
 
-> [!NOTE] 
+> [!NOTE]
 > **Documents liés**
 > 
-> - [[Déploiement AD DS Windows Server 2019]] — Architecture des Unités d'Organisation.
->     
-> - [[Restriction des accès RDP]] — GPO verrouillant techniquement ce modèle de Tiering.
->     
-> - [[Déploiement LAPS]] — Gestion des comptes administrateurs locaux.
->
+> - [Déploiement AD DS Windows Server 2019](Déploiement%20AD%20DS%20Windows%20Server%202019.md) — Architecture des Unités d'Organisation.
+> - [Restriction des accès RDP](../Deploiement%20GPO/Restriction%20des%20accès%20RDP.md) — GPO verrouillant les accès aux serveurs.
+> - [Déploiement LAPS](../Deploiement%20GPO/Déploiement%20LAPS.md) — Gestion des comptes administrateurs locaux.

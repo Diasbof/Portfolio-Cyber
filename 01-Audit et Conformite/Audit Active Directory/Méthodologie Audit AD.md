@@ -5,13 +5,10 @@
 > 
 > Ce document définit le cadre méthodologique de l'audit de sécurité réalisé sur l'infrastructure Active Directory. Cette intervention s'inscrit dans les travaux d'évaluation pour le certificat de compétences professionnelles "Participer à la gestion de la cybersécurité". L'objectif est d'évaluer le niveau de sécurité d'un environnement Windows Server 2019, d'identifier les vulnérabilités de configuration, d'appliquer les remédiations nécessaires, et de préparer le terrain pour un maintien en condition de sécurité via le déploiement de Wazuh.
 
-> [!NOTE] 
-> **Périmètre Technique**
-> 
-> |**Machine**|**OS**|**Rôle dans l'audit**|
-> |---|---|---|
-> |SRV-AD01|Windows Server 2019|Cible (Contrôleur de domaine principal)|
-> |Poste-Audit|Windows 10 / Linux|Exécution des outils d'analyse|
+| Machine                | OS                  | Rôle dans l'audit                             |
+| :--------------------- | :------------------ | :-------------------------------------------- |
+| WIN-479952UTUH2 (DC01) | Windows Server 2019 | Cible (Contrôleur de domaine principal)       |
+| Machine d'Audit        | Kali Linux          | Exécution des outils d'analyse et d'intrusion |
 
 ## 1. Objectifs de l'audit
 
@@ -39,11 +36,11 @@ Afin de réaliser une évaluation standardisée et reconnue, les outils suivants
 
 ### Phase de collecte (Mode non-intrusif)
 
-L'audit est réalisé avec un compte utilisateur standard du domaine, démontrant la quantité d'informations accessibles sans privilèges administratifs (principe de l'assume breach).
+Conformément aux objectifs de remédiation, cette phase d'audit de conformité a été réalisée selon une approche en "White Box" (accès administrateur). L'objectif n'est pas ici de simuler une attaque aveugle, mais d'avoir une visibilité totale sur les configurations internes afin de cartographier exhaustivement la dette technique avant durcissement.
 
 ```PowerShell
-REM Exemple de lancement de PingCastle depuis le poste d'audit
-PingCastle.exe --healthcheck --server 10.10.10.10
+Exemple de lancement de PingCastle depuis le poste d'audit
+PingCastle.exe --healthcheck --server 10.0.2.10
 ```
 
 ### Phase d'analyse
