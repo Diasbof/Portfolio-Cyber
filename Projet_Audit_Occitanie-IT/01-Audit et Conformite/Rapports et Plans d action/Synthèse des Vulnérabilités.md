@@ -65,6 +65,6 @@ La non-remédiation de ces vulnérabilités expose directement l'organisation à
 > [!NOTE]
 > **Documents liés**
 > 
-> - [Analyse PingCastle](../Audit%20Active%20Directory/Analyse%20PingCastle.md) — Rapport technique détaillé et scores de risque.
+> - [Analyse PingCastle](Analyse%20PingCastle.md) — Rapport technique détaillé et scores de risque.
 > 
 > - [Matrice de Remediation](Matrice%20de%20Remediation.md) — Plan d'action technique découlant de cette synthèse.

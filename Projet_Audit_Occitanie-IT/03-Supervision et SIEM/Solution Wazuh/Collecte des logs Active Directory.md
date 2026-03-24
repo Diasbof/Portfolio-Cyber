@@ -1,17 +1,18 @@
 # Collecte des logs Active Directory
 
-> [!NOTE] 
+
+> [!NOTE]
 > **Contexte**
 > 
-> Le serveur central Wazuh étant opérationnel, l'objectif est désormais de remonter les événements de sécurité spécifiques du contrôleur de domaine (SRV-AD01). Par défaut, Windows Server génère un volume massif de journaux. Cette configuration vise à cibler précisément les événements liés à l'authentification, à la gestion des comptes (IAM) et aux modifications des stratégies de groupe, afin de détecter toute compromission de l'Active Directory.
+> Le serveur central Wazuh étant opérationnel, l'objectif est désormais de remonter les événements de sécurité spécifiques du contrôleur de domaine (WIN-479952UTUH2). Par défaut, Windows Server génère un volume massif de journaux. Cette configuration vise à cibler précisément les événements liés à l'authentification, à la gestion des comptes (IAM) et aux modifications des stratégies de groupe, afin de détecter toute compromission de l'Active Directory.
 
-> [!NOTE] 
+> [!NOTE]
 > **Architecture de Collecte**
 > 
-> |**Source des logs**|**Canal (EventChannel)**|**Destination**|**Format de transmission**|
-> |---|---|---|---|
-> |SRV-AD01|`Security`|Manager Wazuh|JSON (via l'agent local)|
-> |SRV-AD01|`System`|Manager Wazuh|JSON|
+> | Source des logs | Canal (EventChannel) | Destination | Format de transmission |
+> | :--- | :--- | :--- | :--- |
+> | WIN-479952UTUH2 (DC01) | Security | Manager Wazuh | JSON (via l'agent local) |
+> | WIN-479952UTUH2 (DC01) | System | Manager Wazuh | JSON |
 
 ## 1. Durcissement de la Stratégie d'Audit (GPO)
 

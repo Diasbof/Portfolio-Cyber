@@ -1,8 +1,16 @@
 # Surveillance d'Intégrité (FIM) et Intégration VirusTotal
 
-> [!NOTE] **Objectif de la configuration**
+> [!NOTE]
+> **Contexte**
 > 
-> La collecte de journaux Windows (Event Logs) ne suffit pas à détecter l'altération de données métiers confidentielles. L'objectif ici est de configurer le module FIM (File Integrity Monitoring) pour surveiller un répertoire critique en temps réel, puis d'automatiser l'analyse des fichiers suspects grâce à la base de données de Threat Intelligence VirusTotal.
+> Le module Syscheck de Wazuh permet de réaliser une surveillance d'intégrité des fichiers (FIM - File Integrity Monitoring). Ce document détaille la configuration mise en place sur le contrôleur de domaine (WIN-479952UTUH2) pour surveiller un répertoire critique simulé contenant des données sensibles. L'objectif est de détecter toute altération de données et d'automatiser l'analyse de fichiers suspects via l'API VirusTotal.
+
+> [!NOTE]
+> **Périmètre de Surveillance**
+> 
+> | Cible | OS | Chemin Critique |
+> | :--- | :--- | :--- |
+> | WIN-479952UTUH2 (DC01) | Windows Server 2019 | `C:\DossierSecret` |
 
 ## 1. Configuration du File Integrity Monitoring (FIM)
 

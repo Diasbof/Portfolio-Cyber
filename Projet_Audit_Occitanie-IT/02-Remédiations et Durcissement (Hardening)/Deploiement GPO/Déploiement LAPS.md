@@ -67,12 +67,12 @@ L'absence de LAPS est une aubaine pour un attaquant. Sans cette solution, la com
 
 Si ce mot de passe est identique sur tout le parc, l'attaquant utilise la technique du **Pass-the-Hash (PtH)** pour se connecter de proche en proche à toutes les machines du domaine (Mouvement Latéral), jusqu'à atteindre un serveur critique. LAPS casse cette chaîne d'attaque en rendant chaque hash unique et éphémère.
 
-> [!TIP] 
+> [!TIP]
 > **Vérification**
 > 
-> L'administrateur autorisé peut désormais utiliser l'interface graphique `LAPS UI` ou la commande PowerShell `Get-AdmPwdPassword -ComputerName PC-CLIENT01` pour récupérer le mot de passe local en cas de besoin (ex: perte de la relation d'approbation avec le domaine).
+> L'administrateur autorisé peut désormais utiliser l'interface graphique `LAPS UI` ou la commande PowerShell `Get-AdmPwdPassword -ComputerName <Nom_Du_Poste>` pour récupérer le mot de passe local en cas de besoin (ex: perte de la relation d'approbation avec le domaine).
 
 > [!NOTE]
 >  > **Documents liés**
->  - [Matrice de Remediation](../../01-Audit%20et%20Conformite/Rapports%20et%20Plans%20d%20action/Matrice%20de%20Remediation.md) — Validation de la correction REM-03. 
->  - [Gestion des Groupes et Moindre Privilège](../Architecture%20Active%20Directory/Gestion%20des%20Groupes%20et%20Moindre%20Privilège.md) — Politique de restriction des comptes à privilèges.
+>  - [Matrice de Remediation](Matrice%20de%20Remediation.md) — Validation de la correction REM-03. 
+>  - [Gestion des Groupes et Moindre Privilège](Gestion%20des%20Groupes%20et%20Moindre%20Privilège.md) — Politique de restriction des comptes à privilèges.

@@ -45,10 +45,10 @@ Afin d'éviter toute interruption de service lors de l'application de ces correc
 > 
 > Les détails d'implémentation de chaque ligne de cette matrice se trouvent dans les documents dédiés :
 > 
-> - [Désactivation protocoles obsoletes](../../02-Windows%20Server%20et%20Remediations/Deploiement%20GPO/Désactivation%20protocoles%20obsoletes.md) _(Traite REM-01 et REM-02)_
+> - [Désactivation protocoles obsoletes](Désactivation%20protocoles%20obsoletes.md) _(Traite REM-01 et REM-02)_
 > 
-> - [Déploiement LAPS](../../02-Windows%20Server%20et%20Remediations/Deploiement%20GPO/Déploiement%20LAPS.md) _(Traite REM-03)_
+> - [Déploiement LAPS](Déploiement%20LAPS.md) _(Traite REM-03)_
 > 
-> - [Restriction des accès RDP](../../02-Windows%20Server%20et%20Remediations/Deploiement%20GPO/Restriction%20des%20accès%20RDP.md) _(Traite REM-04)_
+> - [Restriction des accès RDP](Restriction%20des%20accès%20RDP.md) _(Traite REM-04)_
 > 
 > -- [Modification de la Default Domain Policy](Modification%20de%20la%20Default%20Domain%20Policy.md) _(Traite REM-05)_

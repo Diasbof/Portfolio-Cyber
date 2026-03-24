@@ -30,7 +30,7 @@ Cette section documente la phase de découverte et l'analyse de la surface d'att
 
 ### 2. Remédiations et Durcissement (Hardening)
 Mise en application concrète du principe de moindre privilège et sécurisation du système.
-* **Modèle de Tiering et LAPS :** Gestion automatisée des mots de passe locaux.
+* **Restriction des privilèges et LAPS :** Gestion automatisée des mots de passe locaux et segmentation administrative.
 * **Hygiène Réseau :** Désactivation de LLMNR, NBT-NS et SMBv1 via GPO.
 * **Contrôle d'Accès :** Restriction RDP et mise en place de FGPP (Fine-Grained Password Policies).
 
@@ -60,9 +60,9 @@ Validation technique des mesures de sécurité via un test d'intrusion en condit
 
 ## Navigation dans le Portfolio
 
-| Dossier | Contenu |
-| :--- | :--- |
-| `01-Audit et Conformite` | Rapports initiaux et plans d'actions de remédiation. |
-| `02-Windows Server et Remediations` | Procédures techniques de durcissement GPO et LAPS. |
-| `03-Supervision et SIEM` | Configuration du SIEM, détection d'incidents et réponse active. |
-| `04-Audit Offensif et Pentest` | Démarche d'intrusion (PTES), exploitation de vulnérabilités et matrice des risques. |
+| Dossier                                       | Contenu                                                                             |
+| :-------------------------------------------- | :---------------------------------------------------------------------------------- |
+| `01-Audit et Conformite`                      | Rapports initiaux et plans d'actions de remédiation.                                |
+| `02-Remédiations et Durcissement (Hardening)` | Procédures techniques de durcissement GPO et LAPS.                                  |
+| `03-Supervision et SIEM`                      | Configuration du SIEM, détection d'incidents et réponse active.                     |
+| `04-Audit Offensif et Pentest`                | Démarche d'intrusion (PTES), exploitation de vulnérabilités et matrice des risques. |

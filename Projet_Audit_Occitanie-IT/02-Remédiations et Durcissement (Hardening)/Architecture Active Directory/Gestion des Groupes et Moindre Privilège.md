@@ -45,5 +45,5 @@ L'appartenance à ce groupe applique immédiatement des règles de sécurité st
 > **Documents liés**
 > 
 > - [Déploiement AD DS Windows Server 2019](Déploiement%20AD%20DS%20Windows%20Server%202019.md) — Architecture des Unités d'Organisation.
-> - [Restriction des accès RDP](../Deploiement%20GPO/Restriction%20des%20accès%20RDP.md) — GPO verrouillant les accès aux serveurs.
-> - [Déploiement LAPS](../Deploiement%20GPO/Déploiement%20LAPS.md) — Gestion des comptes administrateurs locaux.
+> - [Restriction des accès RDP](Restriction%20des%20accès%20RDP.md) — GPO verrouillant les accès aux serveurs.
+> - [Déploiement LAPS](Déploiement%20LAPS.md) — Gestion des comptes administrateurs locaux.

@@ -72,4 +72,4 @@ Pour justifier techniquement la nécessité des remédiations, voici comment la 
 > 
 > - [Matrice de Remediation](../Rapports%20et%20Plans%20Actions/Matrice%20de%20Remediation.md) — Suivi du plan d'action.
 > 
-> - [Désactivation protocoles obsoletes](../../02-Windows%20Server%20et%20Remediations/Deploiement%20GPO/Désactivation%20protocoles%20obsoletes.md) — Procédure de correction pour la faille A-02.
+> - [Désactivation protocoles obsoletes](Désactivation%20protocoles%20obsoletes.md) — Procédure de correction pour la faille A-02.
