@@ -63,8 +63,8 @@ Afin de valider la robustesse des défenses mises en place, une simulation d'att
 - Corrélation finale entre les vecteurs d'attaque utilisés et les alertes générées dans le tableau de bord Wazuh.
 
 
-## 🗺️ Architecture et Pipeline de Sécurité
+## Architecture et Pipeline de Sécurité
 
 <p align="center">
-  <img src="Diagramme-OccitanieLAN.drawio%201.png" alt="Schéma de l'infrastructure et pipeline de sécurité" width="100%">
+  <img src="DiagrammeLAN.drawio.png" alt="Schéma de l'infrastructure et pipeline de sécurité" width="100%">
 </p>
