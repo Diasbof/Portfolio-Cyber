@@ -1,68 +1,63 @@
-# Portfolio de Certification : Gestion de la Cybersécurité d'une Infrastructure Active Directory
+# Portfolio : Gestion de la Cybersécurité d'une Infrastructure Active Directory
 
-> [!NOTE]
-> **Contexte Professionnel**
-> 
-> Ce dépôt rassemble les travaux techniques réalisés dans le cadre de la certification "Participer à la gestion de la cybersécurité". Le projet simule une intervention complète de consultant en cybersécurité sur une infrastructure Windows Server 2019 avec Active Directory.
+Ce projet documente une intervention complète de sécurisation sur une infrastructure Windows Server 2019 intégrant Active Directory. Réalisé dans le cadre de la certification "Participer à la gestion de la cybersécurité" , ce travail illustre l'application d'un cycle complet de défense en profondeur (Blue Team) éprouvé par des tests d'intrusion ciblés (Red Team).
 
-## Présentation du Projet
+## Environnement Technique
 
-L'objectif de cette mission est d'évaluer, de sécuriser, puis d'éprouver une infrastructure d'entreprise. La démarche suit un cycle complet de cybersécurité (Blue Team & Red Team) : **Évaluation** $\rightarrow$ **Remédiation** $\rightarrow$ **Surveillance** $\rightarrow$ **Pentest**.
-
-### Stack Technique Utilisée
-
-* **Systèmes :** Windows Server 2019, Windows 10, Debian (Wazuh Manager), Kali Linux (Attaquant).
-* **Audit & Défense :** PingCastle, PowerShell (AD Module), GPO, Microsoft LAPS.
-* **Supervision (Blue Team) :** SIEM/XDR Wazuh, MITRE ATT&CK Mapping, VirusTotal API.
-* **Audit Offensif (Red Team) :** Nmap, Responder, Impacket (GetNPUsers, GetUserSPNs, SecretsDump), Hashcat / John The Ripper.
+- **Systèmes d'exploitation :** Windows Server 2019 (Cible), Windows 10, Debian 11 (Serveur SIEM), Kali Linux (Machine d'audit).
+    
+- **Audit et Administration :** PingCastle, PowerShell (Module Active Directory), Stratégies de Groupe (GPO), Microsoft LAPS.
+    
+- **Supervision (Blue Team) :** SIEM/XDR Wazuh, API VirusTotal.
+    
+- **Sécurité Offensive (Red Team) :** Nmap, Responder, Impacket, Hashcat / John The Ripper.
+    
 
 ---
 
-## Architecture de la Documentation
+## Architecture du Projet
 
-Le portfolio est structuré en quatre piliers majeurs, démontrant la maîtrise du maintien en condition de sécurité et de l'évaluation des risques.
+### 1. Audit de Sécurité et Évaluation
 
-### 1. Audit et Conformité
-Cette section documente la phase de découverte et l'analyse de la surface d'attaque initiale.
-* Utilisation de PingCastle pour générer un score de risque.
-* Synthèse des vulnérabilités prioritaires (Protocoles obsolètes, mauvaises délégations, mots de passe).
-* Établissement d'une matrice de remédiation.
+La première phase a consisté à cartographier la dette technique et la surface d'attaque du domaine selon une approche non intrusive (White Box).
+
+- Évaluation de l'infrastructure avec l'outil PingCastle pour identifier les configurations par défaut dangereuses.
+    
+- Identification de vulnérabilités critiques telles que l'autorisation de mots de passe faibles, l'activation du protocole SMBv1 sur le contrôleur de domaine, et l'exposition aux requêtes de diffusion via LLMNR/NBT-NS.
+    
 
 ### 2. Remédiations et Durcissement (Hardening)
-Mise en application concrète du principe de moindre privilège et sécurisation du système.
-* **Restriction des privilèges et LAPS :** Gestion automatisée des mots de passe locaux et segmentation administrative.
-* **Hygiène Réseau :** Désactivation de LLMNR, NBT-NS et SMBv1 via GPO.
-* **Contrôle d'Accès :** Restriction RDP et mise en place de FGPP (Fine-Grained Password Policies).
 
-### 3. Supervision et SIEM
-Mise en place d'un maintien en condition de sécurité via une solution de détection et réponse.
-* Déploiement centralisé du Manager Wazuh.
-* Collecte des EventChannels de sécurité Windows.
-* Création d'alertes personnalisées et blocage automatisé (Active Response).
+Suite à l'audit, un plan d'action a été déployé pour réduire drastiquement la surface d'attaque.
 
-### 4. Audit Offensif et Pentest
-Validation technique des mesures de sécurité via un test d'intrusion en condition "Black-Box" (Méthodologie PTES).
-* **Accès Initial :** Empoisonnement de flux (LLMNR/NBT-NS) et capture de hashs.
-* **Attaques Kerberos :** Exploitation des comptes via AS-REP Roasting et Kerberoasting.
-* **Post-Exploitation :** Prise de contrôle "Domain Admin" et exfiltration de la base `NTDS.dit` (DCSync).
-* **Analyse de la Détection :** Corrélation des attaques avec les alertes remontées dans le SIEM Wazuh.
+- Désactivation des protocoles réseaux obsolètes (SMBv1, LLMNR, NBT-NS) via le déploiement de stratégies de groupe (GPO).
+    
+- Implémentation de la solution Microsoft LAPS pour automatiser la rotation sécurisée des mots de passe administrateurs locaux sur l'ensemble du parc.
+    
+- Application du principe de moindre privilège par la restriction des accès RDP et le durcissement de la politique globale des mots de passe (longueur minimale de 14 caractères).
+    
 
----
+### 3. Supervision et Réponse aux Incidents (SIEM Wazuh)
 
-## Méthodologie Appliquée
+Pour garantir un maintien en condition de sécurité, une solution de détection centralisée a été mise en œuvre.
 
-> [!IMPORTANT]
-> **Approche "Defense in Depth" et Réalisme**
-> 
-> La sécurité n'est pas traitée comme un produit, mais comme un processus continu. Les remédiations apportées ont été testées face à de véritables vecteurs d'attaque pour valider la robustesse de l'Active Directory, le tout dans le strict respect du cadre légal (Loi Godfrain) et d'une approche de laboratoire cloisonnée.
+- Déploiement d'un Manager Wazuh sous Linux et automatisation de l'installation des agents sur les hôtes Windows par GPO.
+    
+- Collecte et analyse des journaux d'événements (EventChannels) ciblant l'authentification et les modifications de l'Active Directory.
+    
+- Configuration de la surveillance d'intégrité des fichiers (FIM) couplée à l'API VirusTotal pour une qualification instantanée des charges malveillantes.
+    
+- Création de règles de détection personnalisées et d'une réponse active (Active Response) bloquant dynamiquement les adresses IP lors d'attaques par force brute sur le port RDP.
+    
 
----
+### 4. Test d'Intrusion (Pentest)
 
-## Navigation dans le Portfolio
+Afin de valider la robustesse des défenses mises en place, une simulation d'attaque en boîte noire (Black-Box) a été exécutée selon la méthodologie PTES.
 
-| Dossier                                       | Contenu                                                                             |
-| :-------------------------------------------- | :---------------------------------------------------------------------------------- |
-| `01-Audit et Conformite`                      | Rapports initiaux et plans d'actions de remédiation.                                |
-| `02-Remédiations et Durcissement (Hardening)` | Procédures techniques de durcissement GPO et LAPS.                                  |
-| `03-Supervision et SIEM`                      | Configuration du SIEM, détection d'incidents et réponse active.                     |
-| `04-Audit Offensif et Pentest`                | Démarche d'intrusion (PTES), exploitation de vulnérabilités et matrice des risques. |
+- Accès initial obtenu par empoisonnement du trafic réseau avec l'outil Responder.
+    
+- Élévation de privilèges par l'exploitation de faiblesses d'authentification Kerberos (attaques AS-REP Roasting et Kerberoasting).
+    
+- Compromission du contrôleur de domaine démontrée par une attaque DCSync, permettant l'exfiltration de la base des secrets NTDS.dit.
+    
+- Corrélation finale entre les vecteurs d'attaque utilisés et les alertes générées dans le tableau de bord Wazuh.
