@@ -1,10 +1,8 @@
 import json
 import os
 
-# Nom du fichier pour sauvegarder l'avancement localement
 FICHIER_SAUVEGARDE = "suivi_projet_cyber.json"
 
-# La liste des tâches structurée d'après votre audit et remédiation
 TACHES_INITIALES = {
     "Phase 1 : Audit et Conformité": [
         {"nom": "Déploiement de l'environnement", "details": "Serveur Windows 2019 et Kali Linux", "statut": False},
@@ -60,7 +58,7 @@ def afficher_taches(donnees):
     print("="*70)
     
     index_global = 1
-    mapping_index = {} # Dictionnaire pour retrouver la tâche via son numéro
+    mapping_index = {} 
     
     for categorie, liste_taches in donnees.items():
         print(f"\n--- {categorie.upper()} ---")
@@ -69,7 +67,6 @@ def afficher_taches(donnees):
             details = f" ({tache['details']})" if tache['details'] else ""
             print(f"  {index_global:02d}. {etat} {tache['nom']}{details}")
             
-            # Sauvegarde de la référence
             mapping_index[index_global] = (categorie, tache)
             index_global += 1
             
@@ -79,7 +76,7 @@ def basculer_statut(donnees, mapping, choix):
     """Change le statut d'une tâche (Fait <-> Non fait)."""
     if choix in mapping:
         categorie, tache = mapping[choix]
-        tache['statut'] = not tache['statut'] # Inverse le booléen
+        tache['statut'] = not tache['statut'] 
         nouveau_statut = "Terminée" if tache['statut'] else "À faire"
         print(f"\n[OK] Tâche '{tache['nom']}' mise à jour -> {nouveau_statut}.")
         sauvegarder_donnees(donnees)
